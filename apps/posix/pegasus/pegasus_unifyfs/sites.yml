@@ -1,0 +1,43 @@
+x-pegasus:
+  apiLang: python
+  createdBy: hariharan
+  createdOn: 02-28-22T19:53:02Z
+pegasus: '5.0'
+sites:
+- name: local
+  directories:
+  - type: sharedScratch
+    path: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus_athena/scratch
+    sharedFileSystem: false
+    fileServers:
+    - url: file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus_athena/scratch
+      operation: all
+  - type: localStorage
+    path: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus_athena/output
+    sharedFileSystem: false
+    fileServers:
+    - url: file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus_athena/output
+      operation: all
+- name: condorpool
+  directories:
+  - type: sharedScratch
+    path: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus_athena/scratch
+    sharedFileSystem: false
+    fileServers:
+    - url: file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus_athena/scratch
+      operation: all
+  - type: localStorage
+    path: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus_athena/output
+    sharedFileSystem: false
+    fileServers:
+    - url: file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus_athena/output
+      operation: all
+  profiles:
+    pegasus:
+      style: condor
+      data.configuration: sharedfs
+      auxillary.local: 'true'
+    condor:
+      universe: vanilla
+    env:
+      PEGASUS_HOME: /home/hariharan/software/pegasus-5.0/install

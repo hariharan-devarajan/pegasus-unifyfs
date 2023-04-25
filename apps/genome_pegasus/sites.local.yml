@@ -1,0 +1,46 @@
+x-pegasus:
+  apiLang: python
+  createdBy: haridev
+  createdOn: 10-03-21T11:09:31Z
+pegasus: '5.0'
+sites:
+- name: local
+  directories:
+  - type: localStorage
+    path: /p/gpfs1/iopp/temp/1000-genome/output
+    fileServers:
+    - url: file:///p/gpfs1/iopp/temp/1000-genome/output
+      operation: all
+  directories:
+  - type: sharedScratch
+    path: /p/gpfs1/iopp/temp/1000-genome/scratch
+    fileServers:
+    - url: file:///p/gpfs1/iopp/temp/1000-genome/scratch
+      operation: all 
+  profiles:
+    pegasus:
+      style: condor
+      stagein.clusters: 1
+      data.configuration: sharedfs
+      auxillary.local: "true"
+    condor:
+      universe: vanilla
+    env:
+      PEGASUS_HOME: /usr/WS2/iopp/software/pegasus/install
+- name: condorpool
+  directories:
+  - type: sharedScratch
+    path: /p/gpfs1/iopp/temp/1000-genome/scratch
+    fileServers:
+    - url: file:///p/gpfs1/iopp/temp/1000-genome/scratch
+      operation: all 
+  profiles:
+    pegasus:
+      style: condor
+      stagein.clusters: 1
+      data.configuration: sharedfs
+      auxillary.local: "true"
+    condor:
+      universe: vanilla
+    env:
+      PEGASUS_HOME: /usr/WS2/iopp/software/pegasus/install

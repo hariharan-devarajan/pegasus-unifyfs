@@ -1,0 +1,21 @@
+x-pegasus:
+  apiLang: python
+  createdBy: hariharan
+  createdOn: 02-21-22T12:45:55Z
+pegasus: '5.0'
+transformations:
+- name: pegasus_raw
+  sites:
+  - name: condorpool
+    pfn: /home/hariharan/CLionProjects/mimir/build/test/posix/pegasus
+    type: installed
+- name: pegasus_write
+  sites:
+  - name: condorpool
+    pfn: /home/hariharan/CLionProjects/mimir/build/test/posix/pegasus
+    type: installed
+- name: pegasus_read
+  sites:
+  - name: condorpool
+    pfn: /home/hariharan/CLionProjects/mimir/build/test/posix/pegasus
+    type: installed

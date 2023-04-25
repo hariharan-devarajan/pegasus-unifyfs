@@ -1,0 +1,71 @@
+x-pegasus:
+  apiLang: python
+  createdBy: hariharan
+  createdOn: 02-21-22T12:45:55Z
+pegasus: '5.0'
+name: pegasus_io_test
+jobs:
+- type: job
+  name: pegasus_raw
+  id: ID0000001
+  arguments:
+  - --durations
+  - 'yes'
+  - --reporter
+  - compact
+  - --pfs
+  - /home/hariharan/temp/mimir/pfs
+  - --shm
+  - /home/hariharan/temp/mimir/shm
+  - --filename
+  - raw.dat
+  - '[operation=raw]'
+  uses: []
+  profiles:
+    env: {}
+- type: job
+  name: pegasus_write
+  id: ID0000002
+  arguments:
+  - --durations
+  - 'yes'
+  - --reporter
+  - compact
+  - --pfs
+  - /home/hariharan/temp/mimir/pfs
+  - --shm
+  - /home/hariharan/temp/mimir/shm
+  - --filename
+  - write_job.dat
+  - '[operation=write]'
+  uses:
+  - lfn: test.dat
+    type: output
+    stageOut: false
+    registerReplica: false
+  profiles:
+    env: {}
+- type: job
+  name: pegasus_read
+  id: ID0000003
+  arguments:
+  - --durations
+  - 'yes'
+  - --reporter
+  - compact
+  - --pfs
+  - /home/hariharan/temp/mimir/pfs
+  - --shm
+  - /home/hariharan/temp/mimir/shm
+  - --filename
+  - write_job.dat
+  - '[operation=read]'
+  uses:
+  - lfn: test.dat
+    type: input
+  profiles:
+    env: {}
+jobDependencies:
+- id: ID0000002
+  children:
+  - ID0000003

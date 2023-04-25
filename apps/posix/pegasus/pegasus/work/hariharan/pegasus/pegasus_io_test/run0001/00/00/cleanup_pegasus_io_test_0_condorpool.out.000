@@ -1,0 +1,179 @@
+- invocation: True
+  version: 3.0
+  start: 2022-02-21T12:47:09.349-08:00
+  duration: 2.150
+  transformation: "pegasus::cleanup"
+  derivation: "null"
+  resource: "local"
+  wf-label: "pegasus_io_test"
+  wf-stamp: "2022-02-21T12:45:55-08:00"
+  interface: ens33
+  hostaddr: 192.168.237.3
+  hostname: ubuntu
+  pid: 193845
+  uid: 1000
+  user: hariharan
+  gid: 1000
+  group: hariharan
+  umask: 0o0022
+  mainjob:
+    start: 2022-02-21T12:47:09.367-08:00
+    duration: 2.132
+    pid: 193846
+    usage:
+      utime: 0.109
+      stime: 0.022
+      maxrss: 26056
+      minflt: 8768
+      majflt: 0
+      nswap: 0
+      inblock: 0
+      outblock: 16
+      msgsnd: 0
+      msgrcv: 0
+      nsignals: 0
+      nvcsw: 48
+      nivcsw: 4
+    status:
+      raw: 0
+      regular_exitcode: 0
+    executable:
+      file_name: /usr/bin/pegasus-transfer
+      mode: 0o100755
+      size: 2867
+      inode: 149362
+      nlink: 1
+      blksize: 4096
+      blocks: 8
+      mtime: 2021-10-07T11:39:20-07:00
+      atime: 2022-02-21T10:38:09-08:00
+      ctime: 2022-02-17T12:40:27-08:00
+      uid: 0
+      user: root
+      gid: 0
+      group: root
+    argument_vector:
+    procs:
+  jobids:
+    condor: 123.0
+  cwd: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001
+  usage:
+    utime: 0.008
+    stime: 0.012
+    maxrss: 4940
+    minflt: 196
+    majflt: 0
+    nswap: 0
+    inblock: 0
+    outblock: 0
+    msgsnd: 0
+    msgrcv: 0
+    nsignals: 0
+    nvcsw: 3
+    nivcsw: 0
+  machine:
+    page-size: 4096
+    uname_system: linux
+    uname_nodename: ubuntu
+    uname_release: 5.4.0-99-generic
+    uname_machine: x86_64
+    ram_total: 8117312
+    ram_free: 806672
+    ram_shared: 47688
+    ram_buffer: 168876
+    swap_total: 969960
+    swap_free: 317212
+    cpu_count: 8
+    cpu_speed: 2304
+    cpu_vendor: GenuineIntel
+    cpu_model: Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz
+    load_min1: 0.16
+    load_min5: 0.34
+    load_min15: 0.26
+    procs_total: 424
+    procs_running: 1
+    procs_sleeping: 317
+    procs_other: 106
+    procs_vmsize: 414925740
+    procs_rss: 5883376
+    task_total: 1025
+    task_running: 1
+    task_sleeping: 918
+    task_other: 106
+  files:
+    stdin:
+      descriptor_number: 0
+      mode: 0o100664
+      size: 233
+      inode: 13758
+      nlink: 1
+      blksize: 4096
+      blocks: 8
+      mtime: 2022-02-21T12:45:56-08:00
+      atime: 2022-02-21T12:46:52-08:00
+      ctime: 2022-02-21T12:45:56-08:00
+      uid: 1000
+      user: hariharan
+      gid: 1000
+      group: hariharan
+    stdout:
+      temporary_name: /var/spool/condor/local_univ_execute/dir_193844/ks.out.sNL4jR
+      descriptor: 3
+      mode: 0o100600
+      size: 1026
+      inode: 14302
+      nlink: 1
+      blksize: 4096
+      blocks: 8
+      mtime: 2022-02-21T12:47:11-08:00
+      atime: 2022-02-21T12:47:09-08:00
+      ctime: 2022-02-21T12:47:11-08:00
+      uid: 1000
+      user: hariharan
+      gid: 1000
+      group: hariharan
+      data_truncated: false
+      data: |
+        2022-02-21 12:47:09,469    INFO:  Reading URL pairs from stdin
+        2022-02-21 12:47:09,470    INFO:  1 transfers loaded
+        2022-02-21 12:47:09,470    INFO:  PATH=/home/hariharan/software/spack/var/spack/environments/mimir-build/.spack-env/view/bin:/home/hariharan/software/spack/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+        2022-02-21 12:47:09,470    INFO:  LD_LIBRARY_PATH=
+        2022-02-21 12:47:09,479    INFO:  --------------------------------------------------------------------------------
+        2022-02-21 12:47:09,479    INFO:  Starting transfers - attempt 1
+        2022-02-21 12:47:11,481    INFO:  /bin/rm -f -r  '/home/hariharan/CLionProjects/mimir/test/posix/pegasus/scratch/hariharan/pegasus/pegasus_io_test/run0001' 
+        2022-02-21 12:47:11,487    INFO:  --------------------------------------------------------------------------------
+        2022-02-21 12:47:11,487    INFO:  Stats: no local files in the transfer set
+        2022-02-21 12:47:11,488    INFO:  All transfers completed successfully.
+        
+    stderr:
+      temporary_name: /var/spool/condor/local_univ_execute/dir_193844/ks.err.N8Hfr6
+      descriptor: 4
+      mode: 0o100600
+      size: 0
+      inode: 14303
+      nlink: 1
+      blksize: 4096
+      blocks: 0
+      mtime: 2022-02-21T12:47:09-08:00
+      atime: 2022-02-21T12:47:09-08:00
+      ctime: 2022-02-21T12:47:09-08:00
+      uid: 1000
+      user: hariharan
+      gid: 1000
+      group: hariharan
+    metadata:
+      temporary_name: /var/spool/condor/local_univ_execute/dir_193844/ks.meta.WI1qyl
+      descriptor: 5
+      mode: 0o100600
+      size: 0
+      inode: 14304
+      nlink: 1
+      blksize: 4096
+      blocks: 0
+      mtime: 2022-02-21T12:47:09-08:00
+      atime: 2022-02-21T12:47:09-08:00
+      ctime: 2022-02-21T12:47:09-08:00
+      uid: 1000
+      user: hariharan
+      gid: 1000
+      group: hariharan

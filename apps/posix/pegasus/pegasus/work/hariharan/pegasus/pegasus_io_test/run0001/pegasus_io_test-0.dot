@@ -1,0 +1,19 @@
+digraph E {
+size="8.0,10.0"
+ratio=fill
+node [shape=ellipse]
+edge [arrowhead=normal, arrowsize=1.0]
+	"clean_up_condorpool_level_3_0" [color=deepskyblue,style=filled,label="clean_up_condorpool_level_3_0"]
+	"cleanup_pegasus_io_test_0_condorpool" [color=deepskyblue,style=filled,label="cleanup_pegasus_io_test_0_condorpool"]
+	"create_dir_pegasus_io_test_0_condorpool" [color=darkturquoise,style=filled,label="create_dir_pegasus_io_test_0_condorpool"]
+	"pegasus_raw_ID0000001" [color=blueviolet,style=filled,label="pegasus_raw_ID0000001"]
+	"pegasus_write_ID0000002" [color=blueviolet,style=filled,label="pegasus_write_ID0000002"]
+	"pegasus_read_ID0000003" [color=blueviolet,style=filled,label="pegasus_read_ID0000003"]
+
+	"clean_up_condorpool_level_3_0" -> "cleanup_pegasus_io_test_0_condorpool"
+	"create_dir_pegasus_io_test_0_condorpool" -> "pegasus_raw_ID0000001"
+	"create_dir_pegasus_io_test_0_condorpool" -> "pegasus_write_ID0000002"
+	"pegasus_raw_ID0000001" -> "cleanup_pegasus_io_test_0_condorpool"
+	"pegasus_write_ID0000002" -> "pegasus_read_ID0000003"
+	"pegasus_read_ID0000003" -> "clean_up_condorpool_level_3_0"
+}

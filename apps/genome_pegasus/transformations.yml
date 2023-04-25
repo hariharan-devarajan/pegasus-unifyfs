@@ -1,0 +1,14 @@
+x-pegasus:
+  apiLang: python
+  createdBy: haridev
+  createdOn: 10-03-21T11:09:31Z
+pegasus: '5.0'
+transformations:
+    - namespace: pegasus
+      name: mpiexec
+      sites:
+      - {name: condorpool, pfn: /usr/workspace/iopp/software/iopp/apps/montage_pegasus/pmc_lassen.sh, type: installed}
+      profiles:
+        pegasus: {nodes: 2, ppn: 40}
+        condor: {getenv: "*"}
+        env:  {PATH: "/usr/WS2/iopp/software/spack/var/spack/environments/montage-pegasus/.spack-env/view/bin:/usr/workspace/iopp/software/htcondor-V9.0.6/install/bin:/usr/workspace/iopp/applications/Montage/install/bin:/usr/WS2/iopp/software/pegasus/install/bin:/usr/workspace/iopp/software/spack/bin:/usr/tce/packages/python/python-3.7.2/bin:/usr/tce/packages/cmake/cmake-3.20.2/bin:/usr/tce/packages/spectrum-mpi/spectrum-mpi-2020.08.19-gcc-8.3.1/bin:/usr/tce/packages/gcc/gcc-8.3.1/bin:/g/g92/haridev/install_scripts/bin:/usr/workspace/iopp/install_scripts/bin:/usr/tcetmp/bin:/usr/lib64/qt-3.3/bin:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/etc:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/bin:/usr/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibm/spectrum_mpi/jsm_pmix/bin:/opt/ibm/bb/bin:/opt/ibm/flightlog/bin:/opt/ibutils/bin:."}

@@ -1,0 +1,6 @@
+spack:
+  specs:
+  - cmake
+  - unifyfs@1.0.1 ^openssl@1.1.1t
+  - pegasus@5.0
+  view: true

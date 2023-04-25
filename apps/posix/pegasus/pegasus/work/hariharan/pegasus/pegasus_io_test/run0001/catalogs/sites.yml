@@ -1,0 +1,43 @@
+x-pegasus:
+  apiLang: python
+  createdBy: hariharan
+  createdOn: 02-21-22T12:45:55Z
+pegasus: '5.0'
+sites:
+- name: local
+  directories:
+  - type: sharedScratch
+    path: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/scratch
+    sharedFileSystem: false
+    fileServers:
+    - url: file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/scratch
+      operation: all
+  - type: localStorage
+    path: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/output
+    sharedFileSystem: false
+    fileServers:
+    - url: file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/output
+      operation: all
+- name: condorpool
+  directories:
+  - type: sharedScratch
+    path: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/scratch
+    sharedFileSystem: false
+    fileServers:
+    - url: file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/scratch
+      operation: all
+  - type: localStorage
+    path: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/output
+    sharedFileSystem: false
+    fileServers:
+    - url: file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/output
+      operation: all
+  profiles:
+    pegasus:
+      style: condor
+      data.configuration: sharedfs
+      auxillary.local: 'true'
+    condor:
+      universe: vanilla
+    env:
+      PEGASUS_HOME: /usr

@@ -1,0 +1,382 @@
+02/21/22 12:46:03 ******************************************************
+02/21/22 12:46:03 ** condor_scheduniv_exec.117.0 (CONDOR_DAGMAN) STARTING UP
+02/21/22 12:46:03 ** /usr/bin/condor_dagman
+02/21/22 12:46:03 ** SubsystemInfo: name=DAGMAN type=DAGMAN(10) class=DAEMON(1)
+02/21/22 12:46:03 ** Configuration: subsystem:DAGMAN local:<NONE> class:DAEMON
+02/21/22 12:46:03 ** $CondorVersion: 9.5.0 Jan 13 2022 BuildID: Debian-9.5.0-1 PackageID: 9.5.0-1 Debian-9.5.0-1 $
+02/21/22 12:46:03 ** $CondorPlatform: X86_64-Ubuntu_18.04 $
+02/21/22 12:46:03 ** PID = 193543
+02/21/22 12:46:03 ** Log last touched time unavailable (No such file or directory)
+02/21/22 12:46:03 ******************************************************
+02/21/22 12:46:03 Using config source: /etc/condor/condor_config
+02/21/22 12:46:03 Using local config sources: 
+02/21/22 12:46:03    /etc/condor/config.d/00-htcondor-9.0.config
+02/21/22 12:46:03    /etc/condor/config.d/00-minicondor
+02/21/22 12:46:03    /etc/condor/condor_config.local
+02/21/22 12:46:03 config Macros = 85, Sorted = 85, StringBytes = 2441, TablesBytes = 3116
+02/21/22 12:46:03 CLASSAD_CACHING is ENABLED
+02/21/22 12:46:03 Daemon Log is logging: D_ALWAYS D_ERROR
+02/21/22 12:46:03 DaemonCore: No command port requested.
+02/21/22 12:46:03 DAGMAN_USE_STRICT setting: 1
+02/21/22 12:46:03 DAGMAN_VERBOSITY setting: 3
+02/21/22 12:46:03 DAGMAN_DEBUG_CACHE_SIZE setting: 5242880
+02/21/22 12:46:03 DAGMAN_DEBUG_CACHE_ENABLE setting: False
+02/21/22 12:46:03 DAGMAN_SUBMIT_DELAY setting: 0
+02/21/22 12:46:03 DAGMAN_MAX_SUBMIT_ATTEMPTS setting: 6
+02/21/22 12:46:03 DAGMAN_STARTUP_CYCLE_DETECT setting: False
+02/21/22 12:46:03 DAGMAN_MAX_SUBMITS_PER_INTERVAL setting: 100
+02/21/22 12:46:03 DAGMAN_AGGRESSIVE_SUBMIT setting: False
+02/21/22 12:46:03 DAGMAN_USER_LOG_SCAN_INTERVAL setting: 5
+02/21/22 12:46:03 DAGMAN_QUEUE_UPDATE_INTERVAL setting: 300
+02/21/22 12:46:03 DAGMAN_DEFAULT_PRIORITY setting: 0
+02/21/22 12:46:03 DAGMAN_SUPPRESS_NOTIFICATION setting: True
+02/21/22 12:46:03 allow_events (DAGMAN_ALLOW_EVENTS) setting: 114
+02/21/22 12:46:03 DAGMAN_RETRY_SUBMIT_FIRST setting: True
+02/21/22 12:46:03 DAGMAN_RETRY_NODE_FIRST setting: False
+02/21/22 12:46:03 DAGMAN_MAX_JOBS_IDLE setting: 1000
+02/21/22 12:46:03 DAGMAN_MAX_JOBS_SUBMITTED setting: 0
+02/21/22 12:46:03 DAGMAN_MAX_PRE_SCRIPTS setting: 20
+02/21/22 12:46:03 DAGMAN_MAX_POST_SCRIPTS setting: 20
+02/21/22 12:46:03 DAGMAN_MAX_HOLD_SCRIPTS setting: 20
+02/21/22 12:46:03 DAGMAN_MUNGE_NODE_NAMES setting: True
+02/21/22 12:46:03 DAGMAN_PROHIBIT_MULTI_JOBS setting: False
+02/21/22 12:46:03 DAGMAN_SUBMIT_DEPTH_FIRST setting: False
+02/21/22 12:46:03 DAGMAN_ALWAYS_RUN_POST setting: False
+02/21/22 12:46:03 DAGMAN_CONDOR_SUBMIT_EXE setting: /usr/bin/condor_submit
+02/21/22 12:46:03 DAGMAN_USE_CONDOR_SUBMIT setting: True
+02/21/22 12:46:03 DAGMAN_ABORT_DUPLICATES setting: True
+02/21/22 12:46:03 DAGMAN_ABORT_ON_SCARY_SUBMIT setting: True
+02/21/22 12:46:03 DAGMAN_PENDING_REPORT_INTERVAL setting: 600
+02/21/22 12:46:03 DAGMAN_AUTO_RESCUE setting: True
+02/21/22 12:46:03 DAGMAN_MAX_RESCUE_NUM setting: 100
+02/21/22 12:46:03 DAGMAN_WRITE_PARTIAL_RESCUE setting: True
+02/21/22 12:46:03 DAGMAN_DEFAULT_NODE_LOG setting: @(DAG_DIR)/@(DAG_FILE).nodes.log
+02/21/22 12:46:03 DAGMAN_GENERATE_SUBDAG_SUBMITS setting: True
+02/21/22 12:46:03 DAGMAN_MAX_JOB_HOLDS setting: 100
+02/21/22 12:46:03 DAGMAN_HOLD_CLAIM_TIME setting: 20
+02/21/22 12:46:03 ALL_DEBUG setting: 
+02/21/22 12:46:03 DAGMAN_DEBUG setting: 
+02/21/22 12:46:03 DAGMAN_SUPPRESS_JOB_LOGS setting: False
+02/21/22 12:46:03 DAGMAN_REMOVE_NODE_JOBS setting: True
+02/21/22 12:46:03 DAGMAN will adjust edges after parsing
+02/21/22 12:46:03 argv[0] == "condor_scheduniv_exec.117.0"
+02/21/22 12:46:03 argv[1] == "-Lockfile"
+02/21/22 12:46:03 argv[2] == "pegasus_io_test-0.dag.lock"
+02/21/22 12:46:03 argv[3] == "-AutoRescue"
+02/21/22 12:46:03 argv[4] == "1"
+02/21/22 12:46:03 argv[5] == "-DoRescueFrom"
+02/21/22 12:46:03 argv[6] == "0"
+02/21/22 12:46:03 argv[7] == "-Dag"
+02/21/22 12:46:03 argv[8] == "pegasus_io_test-0.dag"
+02/21/22 12:46:03 argv[9] == "-MaxPost"
+02/21/22 12:46:03 argv[10] == "20"
+02/21/22 12:46:03 argv[11] == "-Suppress_notification"
+02/21/22 12:46:03 argv[12] == "-CsdVersion"
+02/21/22 12:46:03 argv[13] == "$CondorVersion: 9.5.0 Jan 13 2022 BuildID: Debian-9.5.0-1 PackageID: 9.5.0-1 Debian-9.5.0-1 $"
+02/21/22 12:46:03 argv[14] == "-Dagman"
+02/21/22 12:46:03 argv[15] == "/usr/bin/condor_dagman"
+02/21/22 12:46:03 Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+02/21/22 12:46:03 Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+02/21/22 12:46:03 Workflow batch-id: <117.0>
+02/21/22 12:46:03 Workflow batch-name: <pegasus_io_test-0.dag+117>
+02/21/22 12:46:03 Workflow accounting_group: <>
+02/21/22 12:46:03 Workflow accounting_group_user: <>
+02/21/22 12:46:03 Warning: failed to get attribute DAGNodeName
+02/21/22 12:46:03 DAGMAN_LOG_ON_NFS_IS_ERROR setting: False
+02/21/22 12:46:03 Default node log file is: </home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log>
+02/21/22 12:46:03 DAG Lockfile will be written to pegasus_io_test-0.dag.lock
+02/21/22 12:46:03 DAG Input file is pegasus_io_test-0.dag
+02/21/22 12:46:03 Parsing 1 dagfiles
+02/21/22 12:46:03 Parsing pegasus_io_test-0.dag ...
+02/21/22 12:46:03 Adjusting edges
+02/21/22 12:46:03 Warning: category registration has no assigned nodes, so the throttle setting (1) will have no effect
+02/21/22 12:46:03 Warning: category stagein has no assigned nodes, so the throttle setting (10) will have no effect
+02/21/22 12:46:03 Warning: category stageout has no assigned nodes, so the throttle setting (10) will have no effect
+02/21/22 12:46:03 Dag contains 6 total jobs
+02/21/22 12:46:03 Bootstrapping...
+02/21/22 12:46:03 Number of pre-completed nodes: 0
+02/21/22 12:46:03 MultiLogFiles: truncating log file /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log
+02/21/22 12:46:03 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:03 Of 6 nodes total:
+02/21/22 12:46:03  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:03   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:03     0       0        0       0       1          5        0
+02/21/22 12:46:03 0 job proc(s) currently held
+02/21/22 12:46:03 DAGMan Runtime Statistics: [ EventCycleTimeCount = 0.0; EventCycleTimeSum = 0.0; LogProcessCycleTimeCount = 0.0; LogProcessCycleTimeSum = 0.0; SleepCycleTimeCount = 0.0; SleepCycleTimeSum = 0.0; SubmitCycleTimeCount = 0.0; SubmitCycleTimeSum = 0.0; ]
+02/21/22 12:46:03 Registering condor_event_timer...
+02/21/22 12:46:04 Submitting HTCondor Node create_dir_pegasus_io_test_0_condorpool job(s)...
+02/21/22 12:46:04 Adding a DAGMan workflow log /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log
+02/21/22 12:46:04 Masking the events recorded in the DAGMAN workflow log
+02/21/22 12:46:04 Mask for workflow log is 0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36
+02/21/22 12:46:04 submitting: /usr/bin/condor_submit -a dag_node_name' '=' 'create_dir_pegasus_io_test_0_condorpool -a +DAGManJobId' '=' '117 -a DAGManJobId' '=' '117 -batch-name pegasus_io_test-0.dag+117 -batch-id 117.0 -a submit_event_notes' '=' 'DAG' 'Node:' 'create_dir_pegasus_io_test_0_condorpool -a dagman_log' '=' '/home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log -a +DAGManNodesMask' '=' '"0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36" -a priority=800 -a JOB=create_dir_pegasus_io_test_0_condorpool -a +DAGNodeRetry' '=' '0 -a DAG_STATUS' '=' '0 -a FAILED_COUNT' '=' '0 -a +KeepClaimIdle' '=' '20 -a notification' '=' 'never -a +DAGParentNodeNames' '=' '"" 00/00/create_dir_pegasus_io_test_0_condorpool.sub
+02/21/22 12:46:04 From submit: Submitting job(s).
+02/21/22 12:46:04 From submit: 1 job(s) submitted to cluster 118.
+02/21/22 12:46:04 From submit: WARNING: the line 'JOB = create_dir_pegasus_io_test_0_condorpool' was unused by condor_submit. Is it a typo?
+02/21/22 12:46:04 	assigned HTCondor ID (118.0.0)
+02/21/22 12:46:04 Just submitted 1 job this cycle...
+02/21/22 12:46:04 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:04 Of 6 nodes total:
+02/21/22 12:46:04  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:04   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:04     0       0        1       0       0          5        0
+02/21/22 12:46:04 0 job proc(s) currently held
+02/21/22 12:46:04 DAGMan Runtime Statistics: [ EventCycleTimeCount = 0.0; EventCycleTimeSum = 0.0; LogProcessCycleTimeCount = 0.0; LogProcessCycleTimeSum = 0.0; SleepCycleTimeCount = 0.0; SleepCycleTimeSum = 0.0; SubmitCycleTimeAvg = 0.02163791656494141; SubmitCycleTimeCount = 1.0; SubmitCycleTimeMax = 0.02163791656494141; SubmitCycleTimeMin = 0.02163791656494141; SubmitCycleTimeStd = 0.02163791656494141; SubmitCycleTimeSum = 0.02163791656494141; ]
+02/21/22 12:46:09 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:46:09 Reassigning the id of job create_dir_pegasus_io_test_0_condorpool from (118.0.0) to (118.0.0)
+02/21/22 12:46:09 Event: ULOG_SUBMIT for HTCondor Node create_dir_pegasus_io_test_0_condorpool (118.0.0) {02/21/22 12:46:04}
+02/21/22 12:46:09 Number of idle job procs: 1
+02/21/22 12:46:09 Event: ULOG_EXECUTE for HTCondor Node create_dir_pegasus_io_test_0_condorpool (118.0.0) {02/21/22 12:46:04}
+02/21/22 12:46:09 Number of idle job procs: 0
+02/21/22 12:46:09 Event: ULOG_JOB_TERMINATED for HTCondor Node create_dir_pegasus_io_test_0_condorpool (118.0.0) {02/21/22 12:46:06}
+02/21/22 12:46:09 Number of idle job procs: 0
+02/21/22 12:46:09 Node create_dir_pegasus_io_test_0_condorpool job proc (118.0.0) completed successfully.
+02/21/22 12:46:09 Node create_dir_pegasus_io_test_0_condorpool job completed
+02/21/22 12:46:09 Running POST script of Node create_dir_pegasus_io_test_0_condorpool...
+02/21/22 12:46:09 Warning: mysin has length 0 (ignore if produced by DAGMan; see gittrac #4987, #5031)
+02/21/22 12:46:09 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:09 Of 6 nodes total:
+02/21/22 12:46:09  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:09   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:09     0       0        0       1       0          5        0
+02/21/22 12:46:09 0 job proc(s) currently held
+02/21/22 12:46:09 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.02178692817687988; EventCycleTimeCount = 1.0; EventCycleTimeMax = 0.02178692817687988; EventCycleTimeMin = 0.02178692817687988; EventCycleTimeStd = 0.02178692817687988; EventCycleTimeSum = 0.02178692817687988; LogProcessCycleTimeAvg = 0.003340959548950195; LogProcessCycleTimeCount = 1.0; LogProcessCycleTimeMax = 0.003340959548950195; LogProcessCycleTimeMin = 0.003340959548950195; LogProcessCycleTimeStd = 0.003340959548950195; LogProcessCycleTimeSum = 0.003340959548950195; SleepCycleTimeAvg = 5.005621194839478; SleepCycleTimeCount = 1.0; SleepCycleTimeMax = 5.005621194839478; SleepCycleTimeMin = 5.005621194839478; SleepCycleTimeStd = 5.005621194839478; SleepCycleTimeSum = 5.005621194839478; SubmitCycleTimeAvg = 0.01082491874694824; SubmitCycleTimeCount = 2.0; SubmitCycleTimeMax = 0.02163791656494141; SubmitCycleTimeMin = 1.192092895507812E-05; SubmitCycleTimeStd = 0.01529188816411662; SubmitCycleTimeSum = 0.02164983749389648; ]
+02/21/22 12:46:09 Initializing user log writer for /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log, (118.0.0)
+02/21/22 12:46:14 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:46:14 Event: ULOG_POST_SCRIPT_TERMINATED for HTCondor Node create_dir_pegasus_io_test_0_condorpool (118.0.0) {02/21/22 12:46:09}
+02/21/22 12:46:14 POST Script of node create_dir_pegasus_io_test_0_condorpool completed successfully.
+02/21/22 12:46:14 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:14 Of 6 nodes total:
+02/21/22 12:46:14  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:14   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:14     1       0        0       0       2          3        0
+02/21/22 12:46:14 0 job proc(s) currently held
+02/21/22 12:46:14 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01268291473388672; EventCycleTimeCount = 2.0; EventCycleTimeMax = 0.02178692817687988; EventCycleTimeMin = 0.003578901290893555; EventCycleTimeStd = 0.01287501928310791; EventCycleTimeSum = 0.02536582946777344; LogProcessCycleTimeAvg = 0.001763463020324707; LogProcessCycleTimeCount = 2.0; LogProcessCycleTimeMax = 0.003340959548950195; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.002230916985378643; LogProcessCycleTimeSum = 0.003526926040649414; SleepCycleTimeAvg = 5.111396074295044; SleepCycleTimeCount = 2.0; SleepCycleTimeMax = 5.21717095375061; SleepCycleTimeMin = 5.005621194839478; SleepCycleTimeStd = 0.1495882690844413; SleepCycleTimeSum = 10.22279214859009; SubmitCycleTimeAvg = 0.007219552993774414; SubmitCycleTimeCount = 3.0; SubmitCycleTimeMax = 0.02163791656494141; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.01248666922979867; SubmitCycleTimeSum = 0.02165865898132324; ]
+02/21/22 12:46:19 Submitting HTCondor Node pegasus_raw_ID0000001 job(s)...
+02/21/22 12:46:19 Adding a DAGMan workflow log /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log
+02/21/22 12:46:19 Masking the events recorded in the DAGMAN workflow log
+02/21/22 12:46:19 Mask for workflow log is 0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36
+02/21/22 12:46:19 submitting: /usr/bin/condor_submit -a dag_node_name' '=' 'pegasus_raw_ID0000001 -a +DAGManJobId' '=' '117 -a DAGManJobId' '=' '117 -batch-name pegasus_io_test-0.dag+117 -batch-id 117.0 -a submit_event_notes' '=' 'DAG' 'Node:' 'pegasus_raw_ID0000001 -a dagman_log' '=' '/home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log -a +DAGManNodesMask' '=' '"0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36" -a priority=10 -a JOB=pegasus_raw_ID0000001 -a +DAGNodeRetry' '=' '0 -a DAG_STATUS' '=' '0 -a FAILED_COUNT' '=' '0 -a +KeepClaimIdle' '=' '20 -a notification' '=' 'never -a +DAGParentNodeNames' '=' '"create_dir_pegasus_io_test_0_condorpool" 00/00/pegasus_raw_ID0000001.sub
+02/21/22 12:46:19 From submit: Submitting job(s).
+02/21/22 12:46:19 From submit: 1 job(s) submitted to cluster 119.
+02/21/22 12:46:19 From submit: WARNING: the line 'JOB = pegasus_raw_ID0000001' was unused by condor_submit. Is it a typo?
+02/21/22 12:46:19 	assigned HTCondor ID (119.0.0)
+02/21/22 12:46:19 Submitting HTCondor Node pegasus_write_ID0000002 job(s)...
+02/21/22 12:46:19 Adding a DAGMan workflow log /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log
+02/21/22 12:46:19 Masking the events recorded in the DAGMAN workflow log
+02/21/22 12:46:19 Mask for workflow log is 0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36
+02/21/22 12:46:19 submitting: /usr/bin/condor_submit -a dag_node_name' '=' 'pegasus_write_ID0000002 -a +DAGManJobId' '=' '117 -a DAGManJobId' '=' '117 -batch-name pegasus_io_test-0.dag+117 -batch-id 117.0 -a submit_event_notes' '=' 'DAG' 'Node:' 'pegasus_write_ID0000002 -a dagman_log' '=' '/home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log -a +DAGManNodesMask' '=' '"0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36" -a priority=10 -a JOB=pegasus_write_ID0000002 -a +DAGNodeRetry' '=' '0 -a DAG_STATUS' '=' '0 -a FAILED_COUNT' '=' '0 -a +KeepClaimIdle' '=' '20 -a notification' '=' 'never -a +DAGParentNodeNames' '=' '"create_dir_pegasus_io_test_0_condorpool" 00/00/pegasus_write_ID0000002.sub
+02/21/22 12:46:19 From submit: Submitting job(s).
+02/21/22 12:46:19 From submit: 1 job(s) submitted to cluster 120.
+02/21/22 12:46:19 From submit: WARNING: the line 'JOB = pegasus_write_ID0000002' was unused by condor_submit. Is it a typo?
+02/21/22 12:46:19 	assigned HTCondor ID (120.0.0)
+02/21/22 12:46:19 Just submitted 2 jobs this cycle...
+02/21/22 12:46:19 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:19 Of 6 nodes total:
+02/21/22 12:46:19  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:19   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:19     1       0        2       0       0          3        0
+02/21/22 12:46:19 0 job proc(s) currently held
+02/21/22 12:46:19 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.008585611979166666; EventCycleTimeCount = 3.0; EventCycleTimeMax = 0.02178692817687988; EventCycleTimeMin = 0.0003910064697265625; EventCycleTimeStd = 0.01154325475599104; EventCycleTimeSum = 0.0257568359375; LogProcessCycleTimeAvg = 0.001763463020324707; LogProcessCycleTimeCount = 2.0; LogProcessCycleTimeMax = 0.003340959548950195; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.002230916985378643; LogProcessCycleTimeSum = 0.003526926040649414; SleepCycleTimeAvg = 5.076383034388225; SleepCycleTimeCount = 3.0; SleepCycleTimeMax = 5.21717095375061; SleepCycleTimeMin = 5.005621194839478; SleepCycleTimeStd = 0.1219264697036066; SleepCycleTimeSum = 15.22914910316467; SubmitCycleTimeAvg = 0.01833194494247437; SubmitCycleTimeCount = 4.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.02445169983707458; SubmitCycleTimeSum = 0.07332777976989746; ]
+02/21/22 12:46:24 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:46:24 Reassigning the id of job pegasus_raw_ID0000001 from (119.0.0) to (119.0.0)
+02/21/22 12:46:24 Event: ULOG_SUBMIT for HTCondor Node pegasus_raw_ID0000001 (119.0.0) {02/21/22 12:46:19}
+02/21/22 12:46:24 Number of idle job procs: 1
+02/21/22 12:46:24 Reassigning the id of job pegasus_write_ID0000002 from (120.0.0) to (120.0.0)
+02/21/22 12:46:24 Event: ULOG_SUBMIT for HTCondor Node pegasus_write_ID0000002 (120.0.0) {02/21/22 12:46:19}
+02/21/22 12:46:24 Number of idle job procs: 2
+02/21/22 12:46:29 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:46:29 Event: ULOG_EXECUTE for HTCondor Node pegasus_raw_ID0000001 (119.0.0) {02/21/22 12:46:25}
+02/21/22 12:46:29 Number of idle job procs: 1
+02/21/22 12:46:29 Event: ULOG_EXECUTE for HTCondor Node pegasus_write_ID0000002 (120.0.0) {02/21/22 12:46:25}
+02/21/22 12:46:29 Number of idle job procs: 0
+02/21/22 12:46:29 Event: ULOG_JOB_TERMINATED for HTCondor Node pegasus_raw_ID0000001 (119.0.0) {02/21/22 12:46:25}
+02/21/22 12:46:29 Number of idle job procs: 0
+02/21/22 12:46:29 Node pegasus_raw_ID0000001 job proc (119.0.0) completed successfully.
+02/21/22 12:46:29 Node pegasus_raw_ID0000001 job completed
+02/21/22 12:46:29 Running POST script of Node pegasus_raw_ID0000001...
+02/21/22 12:46:29 Warning: mysin has length 0 (ignore if produced by DAGMan; see gittrac #4987, #5031)
+02/21/22 12:46:29 Event: ULOG_JOB_TERMINATED for HTCondor Node pegasus_write_ID0000002 (120.0.0) {02/21/22 12:46:25}
+02/21/22 12:46:29 Number of idle job procs: 0
+02/21/22 12:46:29 Node pegasus_write_ID0000002 job proc (120.0.0) completed successfully.
+02/21/22 12:46:29 Node pegasus_write_ID0000002 job completed
+02/21/22 12:46:29 Running POST script of Node pegasus_write_ID0000002...
+02/21/22 12:46:29 Warning: mysin has length 0 (ignore if produced by DAGMan; see gittrac #4987, #5031)
+02/21/22 12:46:29 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:29 Of 6 nodes total:
+02/21/22 12:46:29  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:29   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:29     1       0        0       2       0          3        0
+02/21/22 12:46:29 0 job proc(s) currently held
+02/21/22 12:46:29 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01558637619018555; EventCycleTimeCount = 5.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003800392150878906; EventCycleTimeStd = 0.0221123444123356; EventCycleTimeSum = 0.07793188095092773; LogProcessCycleTimeAvg = 0.002382278442382812; LogProcessCycleTimeCount = 4.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.002615491432960884; LogProcessCycleTimeSum = 0.00952911376953125; SleepCycleTimeAvg = 5.047991037368774; SleepCycleTimeCount = 5.0; SleepCycleTimeMax = 5.21717095375061; SleepCycleTimeMin = 5.005322933197021; SleepCycleTimeStd = 0.09457527699432222; SleepCycleTimeSum = 25.23995518684387; SubmitCycleTimeAvg = 0.01222542921702067; SubmitCycleTimeCount = 6.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.02117135464198967; SubmitCycleTimeSum = 0.07335257530212402; ]
+02/21/22 12:46:29 Initializing user log writer for /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log, (119.0.0)
+02/21/22 12:46:29 Initializing user log writer for /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log, (120.0.0)
+02/21/22 12:46:34 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:46:34 Event: ULOG_POST_SCRIPT_TERMINATED for HTCondor Node pegasus_raw_ID0000001 (119.0.0) {02/21/22 12:46:29}
+02/21/22 12:46:34 POST Script of node pegasus_raw_ID0000001 completed successfully.
+02/21/22 12:46:34 Event: ULOG_POST_SCRIPT_TERMINATED for HTCondor Node pegasus_write_ID0000002 (120.0.0) {02/21/22 12:46:29}
+02/21/22 12:46:34 POST Script of node pegasus_write_ID0000002 completed successfully.
+02/21/22 12:46:34 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:34 Of 6 nodes total:
+02/21/22 12:46:34  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:34   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:34     3       0        0       0       1          2        0
+02/21/22 12:46:34 0 job proc(s) currently held
+02/21/22 12:46:34 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.0139689842859904; EventCycleTimeCount = 6.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003800392150878906; EventCycleTimeStd = 0.02017077985002899; EventCycleTimeSum = 0.08381390571594238; LogProcessCycleTimeAvg = 0.001998805999755859; LogProcessCycleTimeCount = 5.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.002421952135817354; LogProcessCycleTimeSum = 0.009994029998779297; SleepCycleTimeAvg = 5.076428850491841; SleepCycleTimeCount = 6.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 5.005322933197021; SleepCycleTimeStd = 0.1095802979836206; SleepCycleTimeSum = 30.45857310295105; SubmitCycleTimeAvg = 0.0104806763785226; SubmitCycleTimeCount = 7.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.01987035526656592; SubmitCycleTimeSum = 0.0733647346496582; ]
+02/21/22 12:46:39 Submitting HTCondor Node pegasus_read_ID0000003 job(s)...
+02/21/22 12:46:39 Adding a DAGMan workflow log /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log
+02/21/22 12:46:39 Masking the events recorded in the DAGMAN workflow log
+02/21/22 12:46:39 Mask for workflow log is 0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36
+02/21/22 12:46:39 submitting: /usr/bin/condor_submit -a dag_node_name' '=' 'pegasus_read_ID0000003 -a +DAGManJobId' '=' '117 -a DAGManJobId' '=' '117 -batch-name pegasus_io_test-0.dag+117 -batch-id 117.0 -a submit_event_notes' '=' 'DAG' 'Node:' 'pegasus_read_ID0000003 -a dagman_log' '=' '/home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log -a +DAGManNodesMask' '=' '"0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36" -a priority=20 -a JOB=pegasus_read_ID0000003 -a +DAGNodeRetry' '=' '0 -a DAG_STATUS' '=' '0 -a FAILED_COUNT' '=' '0 -a +KeepClaimIdle' '=' '20 -a notification' '=' 'never -a +DAGParentNodeNames' '=' '"pegasus_write_ID0000002" 00/00/pegasus_read_ID0000003.sub
+02/21/22 12:46:39 From submit: Submitting job(s).
+02/21/22 12:46:39 From submit: 1 job(s) submitted to cluster 121.
+02/21/22 12:46:39 From submit: WARNING: the line 'JOB = pegasus_read_ID0000003' was unused by condor_submit. Is it a typo?
+02/21/22 12:46:39 	assigned HTCondor ID (121.0.0)
+02/21/22 12:46:39 Just submitted 1 job this cycle...
+02/21/22 12:46:39 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:39 Of 6 nodes total:
+02/21/22 12:46:39  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:39   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:39     3       0        1       0       0          2        0
+02/21/22 12:46:39 0 job proc(s) currently held
+02/21/22 12:46:39 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.0120835644858224; EventCycleTimeCount = 7.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003800392150878906; EventCycleTimeStd = 0.01907705308895144; EventCycleTimeSum = 0.08458495140075684; LogProcessCycleTimeAvg = 0.001998805999755859; LogProcessCycleTimeCount = 5.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.002421952135817354; LogProcessCycleTimeSum = 0.009994029998779297; SleepCycleTimeAvg = 5.066375017166138; SleepCycleTimeCount = 7.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 5.005322933197021; SleepCycleTimeStd = 0.1035088967525734; SleepCycleTimeSum = 35.46462512016296; SubmitCycleTimeAvg = 0.01263809204101562; SubmitCycleTimeCount = 8.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.01938200520954717; SubmitCycleTimeSum = 0.101104736328125; ]
+02/21/22 12:46:44 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:46:44 Reassigning the id of job pegasus_read_ID0000003 from (121.0.0) to (121.0.0)
+02/21/22 12:46:44 Event: ULOG_SUBMIT for HTCondor Node pegasus_read_ID0000003 (121.0.0) {02/21/22 12:46:39}
+02/21/22 12:46:44 Number of idle job procs: 1
+02/21/22 12:46:44 Event: ULOG_EXECUTE for HTCondor Node pegasus_read_ID0000003 (121.0.0) {02/21/22 12:46:39}
+02/21/22 12:46:44 Number of idle job procs: 0
+02/21/22 12:46:44 Event: ULOG_JOB_TERMINATED for HTCondor Node pegasus_read_ID0000003 (121.0.0) {02/21/22 12:46:39}
+02/21/22 12:46:44 Number of idle job procs: 0
+02/21/22 12:46:44 Node pegasus_read_ID0000003 job proc (121.0.0) completed successfully.
+02/21/22 12:46:44 Node pegasus_read_ID0000003 job completed
+02/21/22 12:46:44 Running POST script of Node pegasus_read_ID0000003...
+02/21/22 12:46:44 Warning: mysin has length 0 (ignore if produced by DAGMan; see gittrac #4987, #5031)
+02/21/22 12:46:44 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:44 Of 6 nodes total:
+02/21/22 12:46:44  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:44   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:44     3       0        0       1       0          2        0
+02/21/22 12:46:44 0 job proc(s) currently held
+02/21/22 12:46:44 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01409286260604858; EventCycleTimeCount = 8.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003800392150878906; EventCycleTimeStd = 0.01855374951618336; EventCycleTimeSum = 0.1127429008483887; LogProcessCycleTimeAvg = 0.002197662989298502; LogProcessCycleTimeCount = 6.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.002220348245724524; LogProcessCycleTimeSum = 0.01318597793579102; SleepCycleTimeAvg = 5.058807641267776; SleepCycleTimeCount = 8.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 5.005322933197021; SleepCycleTimeStd = 0.0981917949793697; SleepCycleTimeSum = 40.47046113014221; SubmitCycleTimeAvg = 0.0112352106306288; SubmitCycleTimeCount = 9.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.01861228214014955; SubmitCycleTimeSum = 0.1011168956756592; ]
+02/21/22 12:46:45 Initializing user log writer for /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log, (121.0.0)
+02/21/22 12:46:49 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:46:49 Event: ULOG_POST_SCRIPT_TERMINATED for HTCondor Node pegasus_read_ID0000003 (121.0.0) {02/21/22 12:46:45}
+02/21/22 12:46:49 POST Script of node pegasus_read_ID0000003 completed successfully.
+02/21/22 12:46:49 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:49 Of 6 nodes total:
+02/21/22 12:46:49  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:49   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:49     4       0        0       0       1          1        0
+02/21/22 12:46:49 0 job proc(s) currently held
+02/21/22 12:46:49 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01290843221876356; EventCycleTimeCount = 9.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003800392150878906; EventCycleTimeStd = 0.01771545360840451; EventCycleTimeSum = 0.1161758899688721; LogProcessCycleTimeAvg = 0.001921279089791434; LogProcessCycleTimeCount = 7.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.002154763334937376; LogProcessCycleTimeSum = 0.01344895362854004; SleepCycleTimeAvg = 4.962977117962307; SleepCycleTimeCount = 9.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.3018076006317841; SleepCycleTimeSum = 44.66679406166077; SubmitCycleTimeAvg = 0.01011300086975098; SubmitCycleTimeCount = 10.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.01790306708355083; SubmitCycleTimeSum = 0.1011300086975098; ]
+02/21/22 12:46:54 Submitting HTCondor Node clean_up_condorpool_level_3_0 job(s)...
+02/21/22 12:46:54 Adding a DAGMan workflow log /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log
+02/21/22 12:46:54 Masking the events recorded in the DAGMAN workflow log
+02/21/22 12:46:54 Mask for workflow log is 0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36
+02/21/22 12:46:54 submitting: /usr/bin/condor_submit -a dag_node_name' '=' 'clean_up_condorpool_level_3_0 -a +DAGManJobId' '=' '117 -a DAGManJobId' '=' '117 -batch-name pegasus_io_test-0.dag+117 -batch-id 117.0 -a submit_event_notes' '=' 'DAG' 'Node:' 'clean_up_condorpool_level_3_0 -a dagman_log' '=' '/home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log -a +DAGManNodesMask' '=' '"0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36" -a priority=1000 -a JOB=clean_up_condorpool_level_3_0 -a +DAGNodeRetry' '=' '0 -a DAG_STATUS' '=' '0 -a FAILED_COUNT' '=' '0 -a +KeepClaimIdle' '=' '20 -a notification' '=' 'never -a +DAGParentNodeNames' '=' '"pegasus_read_ID0000003" 00/00/clean_up_condorpool_level_3_0.sub
+02/21/22 12:46:54 From submit: Submitting job(s).
+02/21/22 12:46:54 From submit: 1 job(s) submitted to cluster 122.
+02/21/22 12:46:54 From submit: WARNING: the line 'JOB = clean_up_condorpool_level_3_0' was unused by condor_submit. Is it a typo?
+02/21/22 12:46:54 	assigned HTCondor ID (122.0.0)
+02/21/22 12:46:54 Just submitted 1 job this cycle...
+02/21/22 12:46:54 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:54 Of 6 nodes total:
+02/21/22 12:46:54  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:54   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:54     4       0        1       0       0          1        0
+02/21/22 12:46:54 0 job proc(s) currently held
+02/21/22 12:46:54 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.0116718053817749; EventCycleTimeCount = 10.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003800392150878906; EventCycleTimeStd = 0.01715397753184928; EventCycleTimeSum = 0.116718053817749; LogProcessCycleTimeAvg = 0.001921279089791434; LogProcessCycleTimeCount = 7.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.002154763334937376; LogProcessCycleTimeSum = 0.01344895362854004; SleepCycleTimeAvg = 4.967238593101501; SleepCycleTimeCount = 10.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.2848658627271382; SleepCycleTimeSum = 49.67238593101501; SubmitCycleTimeAvg = 0.01177128878506747; SubmitCycleTimeCount = 11.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.01785264509279342; SubmitCycleTimeSum = 0.1294841766357422; ]
+02/21/22 12:46:59 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:46:59 Reassigning the id of job clean_up_condorpool_level_3_0 from (122.0.0) to (122.0.0)
+02/21/22 12:46:59 Event: ULOG_SUBMIT for HTCondor Node clean_up_condorpool_level_3_0 (122.0.0) {02/21/22 12:46:54}
+02/21/22 12:46:59 Number of idle job procs: 1
+02/21/22 12:46:59 Event: ULOG_EXECUTE for HTCondor Node clean_up_condorpool_level_3_0 (122.0.0) {02/21/22 12:46:54}
+02/21/22 12:46:59 Number of idle job procs: 0
+02/21/22 12:46:59 Event: ULOG_JOB_TERMINATED for HTCondor Node clean_up_condorpool_level_3_0 (122.0.0) {02/21/22 12:46:56}
+02/21/22 12:46:59 Number of idle job procs: 0
+02/21/22 12:46:59 Node clean_up_condorpool_level_3_0 job proc (122.0.0) completed successfully.
+02/21/22 12:46:59 Node clean_up_condorpool_level_3_0 job completed
+02/21/22 12:46:59 Running POST script of Node clean_up_condorpool_level_3_0...
+02/21/22 12:46:59 Warning: mysin has length 0 (ignore if produced by DAGMan; see gittrac #4987, #5031)
+02/21/22 12:46:59 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:46:59 Of 6 nodes total:
+02/21/22 12:46:59  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:46:59   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:46:59     4       0        0       1       0          1        0
+02/21/22 12:46:59 0 job proc(s) currently held
+02/21/22 12:46:59 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01320754397999157; EventCycleTimeCount = 11.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003800392150878906; EventCycleTimeStd = 0.0170521691907349; EventCycleTimeSum = 0.1452829837799072; LogProcessCycleTimeAvg = 0.002079248428344727; LogProcessCycleTimeCount = 8.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001859664916992188; LogProcessCycleTimeStd = 0.00204434661742463; LogProcessCycleTimeSum = 0.01663398742675781; SleepCycleTimeAvg = 4.970789996060458; SleepCycleTimeCount = 11.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.2705040496282729; SleepCycleTimeSum = 54.67868995666504; SubmitCycleTimeAvg = 0.0107913613319397; SubmitCycleTimeCount = 12.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.821487426757812E-06; SubmitCycleTimeStd = 0.01735700906225795; SubmitCycleTimeSum = 0.1294963359832764; ]
+02/21/22 12:46:59 Initializing user log writer for /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log, (122.0.0)
+02/21/22 12:47:04 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:47:04 Event: ULOG_POST_SCRIPT_TERMINATED for HTCondor Node clean_up_condorpool_level_3_0 (122.0.0) {02/21/22 12:46:59}
+02/21/22 12:47:04 POST Script of node clean_up_condorpool_level_3_0 completed successfully.
+02/21/22 12:47:04 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:47:04 Of 6 nodes total:
+02/21/22 12:47:04  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:47:04   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:47:04     5       0        0       0       1          0        0
+02/21/22 12:47:04 0 job proc(s) currently held
+02/21/22 12:47:04 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01239341497421265; EventCycleTimeCount = 12.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003800392150878906; EventCycleTimeStd = 0.01650139150638559; EventCycleTimeSum = 0.1487209796905518; LogProcessCycleTimeAvg = 0.001864989598592122; LogProcessCycleTimeCount = 9.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001509189605712891; LogProcessCycleTimeStd = 0.002017447786386598; LogProcessCycleTimeSum = 0.0167849063873291; SleepCycleTimeAvg = 4.990067005157471; SleepCycleTimeCount = 12.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.266420040055821; SleepCycleTimeSum = 59.88080406188965; SubmitCycleTimeAvg = 0.009961880170381986; SubmitCycleTimeCount = 13.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.106231689453125E-06; SubmitCycleTimeStd = 0.01688504635037438; SubmitCycleTimeSum = 0.1295044422149658; ]
+02/21/22 12:47:09 Submitting HTCondor Node cleanup_pegasus_io_test_0_condorpool job(s)...
+02/21/22 12:47:09 Adding a DAGMan workflow log /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log
+02/21/22 12:47:09 Masking the events recorded in the DAGMAN workflow log
+02/21/22 12:47:09 Mask for workflow log is 0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36
+02/21/22 12:47:09 submitting: /usr/bin/condor_submit -a dag_node_name' '=' 'cleanup_pegasus_io_test_0_condorpool -a +DAGManJobId' '=' '117 -a DAGManJobId' '=' '117 -batch-name pegasus_io_test-0.dag+117 -batch-id 117.0 -a submit_event_notes' '=' 'DAG' 'Node:' 'cleanup_pegasus_io_test_0_condorpool -a dagman_log' '=' '/home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log -a +DAGManNodesMask' '=' '"0,1,2,4,5,7,9,10,11,12,13,16,17,24,27,35,36" -a priority=1000 -a JOB=cleanup_pegasus_io_test_0_condorpool -a +DAGNodeRetry' '=' '0 -a DAG_STATUS' '=' '0 -a FAILED_COUNT' '=' '0 -a notification' '=' 'never -a +DAGParentNodeNames' '=' '"pegasus_raw_ID0000001,clean_up_condorpool_level_3_0" 00/00/cleanup_pegasus_io_test_0_condorpool.sub
+02/21/22 12:47:09 From submit: Submitting job(s).
+02/21/22 12:47:09 From submit: 1 job(s) submitted to cluster 123.
+02/21/22 12:47:09 From submit: WARNING: the line 'JOB = cleanup_pegasus_io_test_0_condorpool' was unused by condor_submit. Is it a typo?
+02/21/22 12:47:09 	assigned HTCondor ID (123.0.0)
+02/21/22 12:47:09 Just submitted 1 job this cycle...
+02/21/22 12:47:09 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:47:09 Of 6 nodes total:
+02/21/22 12:47:09  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:47:09   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:47:09     5       0        1       0       0          0        0
+02/21/22 12:47:09 0 job proc(s) currently held
+02/21/22 12:47:09 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01146584290724534; EventCycleTimeCount = 13.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003349781036376953; EventCycleTimeStd = 0.01614898337529427; EventCycleTimeSum = 0.1490559577941895; LogProcessCycleTimeAvg = 0.001864989598592122; LogProcessCycleTimeCount = 9.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001509189605712891; LogProcessCycleTimeStd = 0.002017447786386598; LogProcessCycleTimeSum = 0.0167849063873291; SleepCycleTimeAvg = 4.991221849734966; SleepCycleTimeCount = 13.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.2551117511785361; SleepCycleTimeSum = 64.88588404655457; SubmitCycleTimeAvg = 0.01095546994890485; SubmitCycleTimeCount = 14.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.106231689453125E-06; SubmitCycleTimeStd = 0.01664315900345287; SubmitCycleTimeSum = 0.153376579284668; ]
+02/21/22 12:47:14 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:47:14 Reassigning the id of job cleanup_pegasus_io_test_0_condorpool from (123.0.0) to (123.0.0)
+02/21/22 12:47:14 Event: ULOG_SUBMIT for HTCondor Node cleanup_pegasus_io_test_0_condorpool (123.0.0) {02/21/22 12:47:09}
+02/21/22 12:47:14 Number of idle job procs: 1
+02/21/22 12:47:14 Event: ULOG_EXECUTE for HTCondor Node cleanup_pegasus_io_test_0_condorpool (123.0.0) {02/21/22 12:47:09}
+02/21/22 12:47:14 Number of idle job procs: 0
+02/21/22 12:47:14 Event: ULOG_JOB_TERMINATED for HTCondor Node cleanup_pegasus_io_test_0_condorpool (123.0.0) {02/21/22 12:47:11}
+02/21/22 12:47:14 Number of idle job procs: 0
+02/21/22 12:47:14 Node cleanup_pegasus_io_test_0_condorpool job proc (123.0.0) completed successfully.
+02/21/22 12:47:14 Node cleanup_pegasus_io_test_0_condorpool job completed
+02/21/22 12:47:14 Running POST script of Node cleanup_pegasus_io_test_0_condorpool...
+02/21/22 12:47:14 Warning: mysin has length 0 (ignore if produced by DAGMan; see gittrac #4987, #5031)
+02/21/22 12:47:14 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:47:14 Of 6 nodes total:
+02/21/22 12:47:14  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:47:14   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:47:14     5       0        0       1       0          0        0
+02/21/22 12:47:14 0 job proc(s) currently held
+02/21/22 12:47:14 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01236942836216518; EventCycleTimeCount = 14.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003349781036376953; EventCycleTimeStd = 0.01587952940447044; EventCycleTimeSum = 0.1731719970703125; LogProcessCycleTimeAvg = 0.001989078521728515; LogProcessCycleTimeCount = 10.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001509189605712891; LogProcessCycleTimeStd = 0.001942123409582436; LogProcessCycleTimeSum = 0.01989078521728516; SleepCycleTimeAvg = 4.992246508598328; SleepCycleTimeCount = 14.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.2451334257667075; SleepCycleTimeSum = 69.89145112037659; SubmitCycleTimeAvg = 0.01022631327311198; SubmitCycleTimeCount = 15.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 8.106231689453125E-06; SubmitCycleTimeStd = 0.01628448478752965; SubmitCycleTimeSum = 0.1533946990966797; ]
+02/21/22 12:47:14 Initializing user log writer for /home/hariharan/CLionProjects/mimir/test/posix/pegasus/pegasus/work/hariharan/pegasus/pegasus_io_test/run0001/./pegasus_io_test-0.dag.nodes.log, (123.0.0)
+02/21/22 12:47:19 Currently monitoring 1 HTCondor log file(s)
+02/21/22 12:47:19 Event: ULOG_POST_SCRIPT_TERMINATED for HTCondor Node cleanup_pegasus_io_test_0_condorpool (123.0.0) {02/21/22 12:47:14}
+02/21/22 12:47:19 POST Script of node cleanup_pegasus_io_test_0_condorpool completed successfully.
+02/21/22 12:47:19 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:47:19 Of 6 nodes total:
+02/21/22 12:47:19  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:47:19   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:47:19     6       0        0       0       0          0        0
+02/21/22 12:47:19 0 job proc(s) currently held
+02/21/22 12:47:19 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01176425615946452; EventCycleTimeCount = 15.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003349781036376953; EventCycleTimeStd = 0.01548036063701882; EventCycleTimeSum = 0.1764638423919678; LogProcessCycleTimeAvg = 0.001818808642300693; LogProcessCycleTimeCount = 11.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001161098480224609; LogProcessCycleTimeStd = 0.001927062312040613; LogProcessCycleTimeSum = 0.02000689506530762; SleepCycleTimeAvg = 5.006973012288412; SleepCycleTimeCount = 15.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.2430046788000134; SleepCycleTimeSum = 75.10459518432617; SubmitCycleTimeAvg = 0.009587600827217102; SubmitCycleTimeCount = 16.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 6.914138793945312E-06; SubmitCycleTimeStd = 0.01593840453827134; SubmitCycleTimeSum = 0.1534016132354736; ]
+02/21/22 12:47:19 All jobs Completed!
+02/21/22 12:47:19 Note: 0 total job deferrals because of -MaxJobs limit (0)
+02/21/22 12:47:19 Note: 0 total job deferrals because of -MaxIdle limit (1000)
+02/21/22 12:47:19 Note: 0 total job deferrals because of node category throttles
+02/21/22 12:47:19 Note: 0 total PRE script deferrals because of -MaxPre limit (20) or DEFER
+02/21/22 12:47:19 Note: 0 total POST script deferrals because of -MaxPost limit (20) or DEFER
+02/21/22 12:47:19 Note: 0 total HOLD script deferrals because of -MaxHold limit (20) or DEFER
+02/21/22 12:47:19 DAG status: 0 (DAG_STATUS_OK)
+02/21/22 12:47:19 Of 6 nodes total:
+02/21/22 12:47:19  Done     Pre   Queued    Post   Ready   Un-Ready   Failed
+02/21/22 12:47:19   ===     ===      ===     ===     ===        ===      ===
+02/21/22 12:47:19     6       0        0       0       0          0        0
+02/21/22 12:47:19 0 job proc(s) currently held
+02/21/22 12:47:19 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01176425615946452; EventCycleTimeCount = 15.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003349781036376953; EventCycleTimeStd = 0.01548036063701882; EventCycleTimeSum = 0.1764638423919678; LogProcessCycleTimeAvg = 0.001818808642300693; LogProcessCycleTimeCount = 11.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001161098480224609; LogProcessCycleTimeStd = 0.001927062312040613; LogProcessCycleTimeSum = 0.02000689506530762; SleepCycleTimeAvg = 5.006973012288412; SleepCycleTimeCount = 15.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.2430046788000134; SleepCycleTimeSum = 75.10459518432617; SubmitCycleTimeAvg = 0.009587600827217102; SubmitCycleTimeCount = 16.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 6.914138793945312E-06; SubmitCycleTimeStd = 0.01593840453827134; SubmitCycleTimeSum = 0.1534016132354736; ]
+02/21/22 12:47:19 Wrote metrics file pegasus_io_test-0.dag.metrics.
+02/21/22 12:47:19 DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.01176425615946452; EventCycleTimeCount = 15.0; EventCycleTimeMax = 0.05179500579833984; EventCycleTimeMin = 0.0003349781036376953; EventCycleTimeStd = 0.01548036063701882; EventCycleTimeSum = 0.1764638423919678; LogProcessCycleTimeAvg = 0.001818808642300693; LogProcessCycleTimeCount = 11.0; LogProcessCycleTimeMax = 0.005648136138916016; LogProcessCycleTimeMin = 0.0001161098480224609; LogProcessCycleTimeStd = 0.001927062312040613; LogProcessCycleTimeSum = 0.02000689506530762; SleepCycleTimeAvg = 5.006973012288412; SleepCycleTimeCount = 15.0; SleepCycleTimeMax = 5.218617916107178; SleepCycleTimeMin = 4.196332931518555; SleepCycleTimeStd = 0.2430046788000134; SleepCycleTimeSum = 75.10459518432617; SubmitCycleTimeAvg = 0.009587600827217102; SubmitCycleTimeCount = 16.0; SubmitCycleTimeMax = 0.05166912078857422; SubmitCycleTimeMin = 6.914138793945312E-06; SubmitCycleTimeStd = 0.01593840453827134; SubmitCycleTimeSum = 0.1534016132354736; ]
+02/21/22 12:47:19 **** condor_scheduniv_exec.117.0 (condor_DAGMAN) pid 193543 EXITING WITH STATUS 0

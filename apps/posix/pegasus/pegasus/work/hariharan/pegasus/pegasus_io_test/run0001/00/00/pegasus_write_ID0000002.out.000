@@ -1,0 +1,185 @@
+- invocation: True
+  version: 3.0
+  start: 2022-02-21T12:46:25.669-08:00
+  duration: 0.059
+  transformation: "pegasus_write"
+  derivation: "ID0000002"
+  resource: "condorpool"
+  wf-label: "pegasus_io_test"
+  wf-stamp: "2022-02-21T12:45:55-08:00"
+  interface: ens33
+  hostaddr: 192.168.237.3
+  hostname: ubuntu
+  pid: 193671
+  uid: 1000
+  user: hariharan
+  gid: 1000
+  group: hariharan
+  umask: 0o0022
+  mainjob:
+    start: 2022-02-21T12:46:25.688-08:00
+    duration: 0.041
+    pid: 193696
+    usage:
+      utime: 0.012
+      stime: 0.001
+      maxrss: 5500
+      minflt: 227
+      majflt: 0
+      nswap: 0
+      inblock: 0
+      outblock: 8200
+      msgsnd: 0
+      msgrcv: 0
+      nsignals: 0
+      nvcsw: 133
+      nivcsw: 3
+    status:
+      raw: 0
+      regular_exitcode: 0
+    executable:
+      file_name: /home/hariharan/CLionProjects/mimir/build/test/posix/pegasus
+      mode: 0o100775
+      size: 8723872
+      inode: 9063
+      nlink: 1
+      blksize: 4096
+      blocks: 17040
+      mtime: 2022-02-21T12:33:16-08:00
+      atime: 2022-02-21T12:33:16-08:00
+      ctime: 2022-02-21T12:33:16-08:00
+      uid: 1000
+      user: hariharan
+      gid: 1000
+      group: hariharan
+    argument_vector:
+      - "--durations"
+      - "yes"
+      - "--reporter"
+      - "compact"
+      - "--pfs"
+      - "/home/hariharan/temp/mimir/pfs"
+      - "--shm"
+      - "/home/hariharan/temp/mimir/shm"
+      - "--filename"
+      - "write_job.dat"
+      - "[operation=write]"
+    procs:
+  jobids:
+    condor: 120.0
+  cwd: /home/hariharan/CLionProjects/mimir/test/posix/pegasus/scratch/hariharan/pegasus/pegasus_io_test/run0001
+  usage:
+    utime: 0.007
+    stime: 0.015
+    maxrss: 5344
+    minflt: 211
+    majflt: 0
+    nswap: 0
+    inblock: 0
+    outblock: 0
+    msgsnd: 0
+    msgrcv: 0
+    nsignals: 0
+    nvcsw: 4
+    nivcsw: 9
+  machine:
+    page-size: 4096
+    uname_system: linux
+    uname_nodename: ubuntu
+    uname_release: 5.4.0-99-generic
+    uname_machine: x86_64
+    ram_total: 8117312
+    ram_free: 815960
+    ram_shared: 47688
+    ram_buffer: 167952
+    swap_total: 969960
+    swap_free: 317212
+    cpu_count: 8
+    cpu_speed: 2304
+    cpu_vendor: GenuineIntel
+    cpu_model: Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz
+    load_min1: 0.21
+    load_min5: 0.38
+    load_min15: 0.27
+    procs_total: 424
+    procs_running: 3
+    procs_sleeping: 319
+    procs_other: 102
+    procs_vmsize: 415112056
+    procs_rss: 5919788
+    task_total: 1009
+    task_running: 2
+    task_sleeping: 905
+    task_other: 102
+  files:
+    stdin:
+      file_name: /dev/null
+      mode: 0o20666
+      size: 0
+      inode: 6
+      nlink: 1
+      blksize: 4096
+      blocks: 0
+      mtime: 2022-02-17T12:18:27-08:00
+      atime: 2022-02-17T12:18:27-08:00
+      ctime: 2022-02-17T12:18:27-08:00
+      uid: 0
+      user: root
+      gid: 0
+      group: root
+    stdout:
+      temporary_name: /tmp/ks.out.0dijPo
+      descriptor: 3
+      mode: 0o100600
+      size: 200
+      inode: 14311
+      nlink: 1
+      blksize: 4096
+      blocks: 8
+      mtime: 2022-02-21T12:46:25-08:00
+      atime: 2022-02-21T12:46:25-08:00
+      ctime: 2022-02-21T12:46:25-08:00
+      uid: 1000
+      user: hariharan
+      gid: 1000
+      group: hariharan
+      data_truncated: false
+      data: |
+        I/O performed on file /home/hariharan/temp/mimir/pfs/write_job.dat
+        Timing: init 0.000047, metadata 0.000183, io 0.036045, and finalize 0.000154.
+        0.037 s: Write
+        Passed 1 test case with 67 assertions.
+        
+        
+    stderr:
+      temporary_name: /tmp/ks.err.VzhD5R
+      descriptor: 4
+      mode: 0o100600
+      size: 0
+      inode: 14312
+      nlink: 1
+      blksize: 4096
+      blocks: 0
+      mtime: 2022-02-21T12:46:25-08:00
+      atime: 2022-02-21T12:46:25-08:00
+      ctime: 2022-02-21T12:46:25-08:00
+      uid: 1000
+      user: hariharan
+      gid: 1000
+      group: hariharan
+    metadata:
+      temporary_name: /tmp/ks.meta.iu2Wll
+      descriptor: 5
+      mode: 0o100600
+      size: 0
+      inode: 14313
+      nlink: 1
+      blksize: 4096
+      blocks: 0
+      mtime: 2022-02-21T12:46:25-08:00
+      atime: 2022-02-21T12:46:25-08:00
+      ctime: 2022-02-21T12:46:25-08:00
+      uid: 1000
+      user: hariharan
+      gid: 1000
+      group: hariharan

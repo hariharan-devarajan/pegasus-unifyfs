@@ -1,0 +1,64 @@
+x-pegasus:
+  apiLang: python
+  createdBy: haridev
+  createdOn: 10-03-21T11:09:31Z
+pegasus: '5.0'
+sites:
+- name: local
+  directories:
+  - type: localStorage
+    path: /p/lustre1/haridev/iopp/temp/montage-workflow/output
+    fileServers:
+    - url: file:///p/lustre1/haridev/iopp/temp/montage-workflow/output
+      operation: all
+  - type: sharedScratch
+    path: /p/lustre1/haridev/iopp/temp/montage-workflow/scratch
+    fileServers:
+    - url: file:///p/lustre1/haridev/iopp/temp/montage-workflow/scratch
+      operation: all
+  profiles:
+    pegasus:
+      stagein.clusters: 1
+- name: condorpool
+  directories:
+  - type: sharedScratch
+    path: /p/lustre1/haridev/iopp/temp/montage-workflow/scratch
+    fileServers:
+    - url: file:///p/lustre1/haridev/iopp/temp/montage-workflow/scratch
+      operation: all 
+  profiles:
+    pegasus:
+      style: condor
+      stagein.clusters: 1
+      data.configuration: sharedfs
+      auxillary.local: "true"
+    condor:
+      universe: vanilla
+    env:
+      PEGASUS_HOME: /usr/workspace/iopp/software/pegasus-5.0-x86_64/install
+- name: slurm
+  directories:
+  - type: sharedScratch
+    path: /p/lustre1/haridev/iopp/temp/montage-workflow/scratch
+    fileServers:
+    - url: file:///p/lustre1/haridev/iopp/temp/montage-workflow/scratch
+      operation: all
+  - type: localStorage
+    path: /p/lustre1/haridev/iopp/temp/montage-workflow/output
+    fileServers:
+    - url: file:///p/lustre1/haridev/iopp/temp/montage-workflow/output
+      operation: all
+  profiles:
+    pegasus:
+      style: glite
+      stagein.clusters: 1
+      data.configuration: sharedfs
+      auxillary.local: "true"
+      queue: "pbatch"
+      runtime: 60
+      project: "asccasc"
+      glite.arguments: "--nodes=1"
+    condor:
+      grid_resource: batch slurm
+    env:
+      PEGASUS_HOME: /usr/workspace/iopp/software/pegasus-5.0-x86_64/install

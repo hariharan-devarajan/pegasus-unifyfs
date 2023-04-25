@@ -1,0 +1,144 @@
+000 (118.000.000) 2022-02-21 12:46:04 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=schedd_1154_2061>
+    DAG Node: create_dir_pegasus_io_test_0_condorpool
+    pool:local
+...
+001 (118.000.000) 2022-02-21 12:46:04 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=starter_179158_c4ae_16>
+...
+005 (118.000.000) 2022-02-21 12:46:06 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+...
+016 (118.000.000) 2022-02-21 12:46:09 POST Script terminated.
+	(1) Normal termination (return value 0)
+    DAG Node: create_dir_pegasus_io_test_0_condorpool
+...
+000 (119.000.000) 2022-02-21 12:46:19 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=schedd_1154_2061>
+    DAG Node: pegasus_raw_ID0000001
+    pool:condorpool
+...
+000 (120.000.000) 2022-02-21 12:46:19 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=schedd_1154_2061>
+    DAG Node: pegasus_write_ID0000002
+    pool:condorpool
+...
+001 (119.000.000) 2022-02-21 12:46:25 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=startd_1154_2061>
+...
+001 (120.000.000) 2022-02-21 12:46:25 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=startd_1154_2061>
+...
+005 (119.000.000) 2022-02-21 12:46:25 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :      125      125    991499 
+	   Memory (MB)          :        0        1       990 
+
+	Job terminated of its own accord at 2022-02-21T20:46:25Z with exit-code 0.
+...
+005 (120.000.000) 2022-02-21 12:46:25 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :      125      125    991499 
+	   Memory (MB)          :        1        1       990 
+
+	Job terminated of its own accord at 2022-02-21T20:46:25Z with exit-code 0.
+...
+016 (119.000.000) 2022-02-21 12:46:29 POST Script terminated.
+	(1) Normal termination (return value 0)
+    DAG Node: pegasus_raw_ID0000001
+...
+016 (120.000.000) 2022-02-21 12:46:29 POST Script terminated.
+	(1) Normal termination (return value 0)
+    DAG Node: pegasus_write_ID0000002
+...
+000 (121.000.000) 2022-02-21 12:46:39 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=schedd_1154_2061>
+    DAG Node: pegasus_read_ID0000003
+    pool:condorpool
+...
+001 (121.000.000) 2022-02-21 12:46:39 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=startd_1154_2061>
+...
+005 (121.000.000) 2022-02-21 12:46:39 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :      125      125    991499 
+	   Memory (MB)          :        1        1       990 
+
+	Job terminated of its own accord at 2022-02-21T20:46:39Z with exit-code 0.
+...
+016 (121.000.000) 2022-02-21 12:46:45 POST Script terminated.
+	(1) Normal termination (return value 0)
+    DAG Node: pegasus_read_ID0000003
+...
+000 (122.000.000) 2022-02-21 12:46:54 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=schedd_1154_2061>
+    DAG Node: clean_up_condorpool_level_3_0
+    pool:local
+...
+001 (122.000.000) 2022-02-21 12:46:54 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=starter_179158_c4ae_20>
+...
+005 (122.000.000) 2022-02-21 12:46:56 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+...
+016 (122.000.000) 2022-02-21 12:46:59 POST Script terminated.
+	(1) Normal termination (return value 0)
+    DAG Node: clean_up_condorpool_level_3_0
+...
+000 (123.000.000) 2022-02-21 12:47:09 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=schedd_1154_2061>
+    DAG Node: cleanup_pegasus_io_test_0_condorpool
+    pool:local
+...
+001 (123.000.000) 2022-02-21 12:47:09 Job executing on host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&alias=ubuntu&noUDP&sock=starter_179158_c4ae_21>
+...
+005 (123.000.000) 2022-02-21 12:47:11 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+...
+016 (123.000.000) 2022-02-21 12:47:14 POST Script terminated.
+	(1) Normal termination (return value 0)
+    DAG Node: cleanup_pegasus_io_test_0_condorpool
+...
