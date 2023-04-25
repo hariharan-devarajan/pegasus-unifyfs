@@ -2,3 +2,4 @@ dependency/.spack-env
 dependency/python-env
 dependency/spack.lock
 .idea
+build
