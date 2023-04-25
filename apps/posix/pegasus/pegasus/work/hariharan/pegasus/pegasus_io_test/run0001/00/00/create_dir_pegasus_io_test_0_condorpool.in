@@ -1,6 +1,0 @@
-[
-  {
-    "id": 1,
-    "type": "mkdir",
-    "target": { "site_label": "condorpool", "url": "file:///home/hariharan/CLionProjects/mimir/test/posix/pegasus/scratch/hariharan/pegasus/pegasus_io_test/run0001" } }
-]

@@ -1,14 +1,12 @@
 
-#include <catch_config.h>
+#include "catch_config.h"
 #include <test_utils.h>
 
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
 
-#include <mimir/api/posix.h>
 #include <fcntl.h>
 #include <mpi.h>
-#include "mimir/log/logger.h"
 /**
  * Test data structures
  */
@@ -83,42 +81,7 @@ TEST_CASE("Write",
   auto write_data = std::vector<char>(args.request_size, 'w');
   initialization.pauseTime();
 
-  using namespace mimir;
-  MimirHandler job_configuration_handler;
-  JobConfigurationAdvice job_conf_advice;
-  job_conf_advice._job_id = 0;
-  job_conf_advice._devices.emplace_back(args.shm, 16);
-  job_conf_advice._devices.emplace_back(args.pfs, 128);
-  job_conf_advice._job_time_minutes = 30;
-  job_conf_advice._num_cores_per_node = 8;
-  job_conf_advice._num_gpus_per_node = 0;
-  job_conf_advice._num_nodes = 1;
-  job_conf_advice._priority = 100;
-  job_configuration_advice_begin(job_conf_advice, job_configuration_handler);
 
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::INDEPENDENT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration + 2);
-  file_advice._per_io_metadata = 2 / (args.iteration + 2);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
-
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  file_advice._name = filepath;
-  file_advice_begin(file_advice, file_handler);
 
   /** Main I/O **/
   metadata.resumeTime();
@@ -149,7 +112,7 @@ TEST_CASE("Write",
   if (fs::exists(filepath)) fs::remove(filepath);
   if (fs::exists(new_file)) fs::remove(new_file);
   finalization.pauseTime();
-  file_advice_end(file_handler);
+
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
           initialization.getElapsedTime(), metadata.getElapsedTime(),
           io.getElapsedTime(), finalization.getElapsedTime());
@@ -171,59 +134,16 @@ TEST_CASE("Read",
                     std::to_string(args.request_size * args.iteration) +
                     "; } > " + filepath.c_str() + " ";
   int status = system(cmd.c_str());
-  if (fs::exists(filepath)) {
-    mimir::Logger::Instance("PEGASUS_TEST")
-        ->log(mimir::LOG_INFO, "written file %s", filepath.c_str());
-  }
   cmd = "{ tr -dc '[:alnum:]' < /dev/urandom | head -c " +
         std::to_string(args.request_size * args.iteration) + "; } > " +
         shm_filepath.c_str() + " ";
   status = system(cmd.c_str());
-  if (fs::exists(shm_filepath)) {
-    mimir::Logger::Instance("PEGASUS_TEST")
-        ->log(mimir::LOG_INFO, "written file %s", shm_filepath.c_str());
-  }
   /** Prepare data **/
   auto read_data = std::vector<char>(args.request_size, 'r');
   initialization.pauseTime();
   fprintf(stdout, "file to read %s\n", filepath.c_str());
 
-  using namespace mimir;
-  MimirHandler job_configuration_handler;
-  JobConfigurationAdvice job_conf_advice;
-  job_conf_advice._job_id = 0;
-  job_conf_advice._devices.emplace_back(args.shm, 16);
-  job_conf_advice._devices.emplace_back(args.pfs, 128);
-  job_conf_advice._job_time_minutes = 30;
-  job_conf_advice._num_cores_per_node = 8;
-  job_conf_advice._num_gpus_per_node = 0;
-  job_conf_advice._num_nodes = 1;
-  job_conf_advice._priority = 100;
-  job_configuration_advice_begin(job_conf_advice, job_configuration_handler);
 
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::INDEPENDENT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration + 2);
-  file_advice._per_io_metadata = 2 / (args.iteration + 2);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
-
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  file_advice._name = filepath;
-  file_advice_begin(file_advice, file_handler);
 
   /** Main I/O **/
   metadata.resumeTime();
@@ -255,7 +175,7 @@ TEST_CASE("Read",
   if (fs::exists(filepath)) fs::remove(filepath);
   if (fs::exists(shm_filepath)) fs::remove(shm_filepath);
   finalization.pauseTime();
-  file_advice_end(file_handler);
+
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
           initialization.getElapsedTime(), metadata.getElapsedTime(),
           io.getElapsedTime(), finalization.getElapsedTime());
@@ -279,43 +199,6 @@ TEST_CASE("ReadAfterWrite",
   auto write_data = std::vector<char>(args.request_size, 'w');
   auto read_data = std::vector<char>(args.request_size, 'r');
   initialization.pauseTime();
-
-  using namespace mimir;
-  MimirHandler job_configuration_handler;
-  JobConfigurationAdvice job_conf_advice;
-  job_conf_advice._job_id = 0;
-  job_conf_advice._devices.emplace_back(args.shm, 16);
-  job_conf_advice._devices.emplace_back(args.pfs, 128);
-  job_conf_advice._job_time_minutes = 30;
-  job_conf_advice._num_cores_per_node = 8;
-  job_conf_advice._num_gpus_per_node = 0;
-  job_conf_advice._num_nodes = 1;
-  job_conf_advice._priority = 100;
-  job_configuration_advice_begin(job_conf_advice, job_configuration_handler);
-
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::INDEPENDENT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
-
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  file_advice._name = filepath;
-  file_advice_begin(file_advice, file_handler);
 
   /** Write I/O **/
   metadata.resumeTime();
@@ -373,7 +256,6 @@ TEST_CASE("ReadAfterWrite",
   if (fs::exists(filepath)) fs::remove(filepath);
   if (fs::exists(new_file_read)) fs::remove(new_file_read);
   finalization.pauseTime();
-  file_advice_end(file_handler);
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
           initialization.getElapsedTime(), metadata.getElapsedTime(),
           io.getElapsedTime(), finalization.getElapsedTime());
@@ -394,32 +276,7 @@ TEST_CASE("ReadAfterWriteShared",
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
   my_io_filename = args.pfs / (args.filename);
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::SHARED_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
 
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  auto filename = args.filename;
-  fs::path filepath = args.pfs / filename;
-  file_advice._name = filepath;
-  file_advice_begin(file_advice, file_handler);
 
   fs::create_directories(args.pfs);
   /** Clean existing file**/
@@ -471,7 +328,6 @@ TEST_CASE("ReadAfterWriteShared",
   metadata.pauseTime();
   REQUIRE(close_status == 0);
 
-  file_advice_end(file_handler);
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
           initialization.getElapsedTime(), metadata.getElapsedTime(),
           io.getElapsedTime(), finalization.getElapsedTime());
@@ -498,35 +354,6 @@ TEST_CASE("OnlyReadInputFiles",
                     std::to_string(args.request_size * args.iteration) +
                     "; } > " + my_io_filename.c_str() + " ";
   int status = system(cmd.c_str());
-  if (fs::exists(my_io_filename)) {
-    mimir::Logger::Instance("PEGASUS_TEST")
-        ->log(mimir::LOG_INFO, "written file %s", my_io_filename.c_str());
-  }
-  using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::INPUT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
-
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-
-  file_advice._name = my_io_filename;
-  file_advice_begin(file_advice, file_handler);
 
   /** Prepare data **/
   auto read_data = std::vector<char>(args.request_size, 'r');
@@ -557,7 +384,7 @@ TEST_CASE("OnlyReadInputFiles",
 
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
   if (fs::exists(my_io_filename_shm)) fs::remove(my_io_filename_shm);
-  file_advice_end(file_handler);
+
   fprintf(stdout,
           "Timing: init %f, metadata %f, io %f, compute %f, and "
           "finalize %f.\n",
@@ -584,36 +411,8 @@ TEST_CASE("ReadOnly",
                     std::to_string(args.request_size * args.iteration) +
                     "; } > " + my_io_filename.c_str() + " ";
   int status = system(cmd.c_str());
-  if (fs::exists(my_io_filename)) {
-    mimir::Logger::Instance("PEGASUS_TEST")
-        ->log(mimir::LOG_INFO, "written file %s", my_io_filename.c_str());
-  }
 
-  using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::READ_ONLY_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
 
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-
-  file_advice._name = my_io_filename;
-  file_advice_begin(file_advice, file_handler);
 
   /** Prepare data **/
   auto read_data = std::vector<char>(args.request_size, 'r');
@@ -644,7 +443,6 @@ TEST_CASE("ReadOnly",
 
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
   if (fs::exists(my_io_filename_shm)) fs::remove(my_io_filename_shm);
-  file_advice_end(file_handler);
   fprintf(stdout,
           "Timing: init %f, metadata %f, io %f, compute %f, and "
           "finalize %f.\n",
@@ -668,33 +466,7 @@ TEST_CASE("PriorityWrite",
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
   my_io_filename = args.pfs / (args.filename);
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::PLACEMENT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
-  file_advice._placement_device = 0;
 
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  auto filename = args.filename;
-  fs::path filepath = args.pfs / filename;
-  file_advice._name = filepath;
-  file_advice_begin(file_advice, file_handler);
 
   fs::create_directories(args.pfs);
   /** Clean existing file**/
@@ -746,7 +518,6 @@ TEST_CASE("PriorityWrite",
   metadata.pauseTime();
   REQUIRE(close_status == 0);
 
-  file_advice_end(file_handler);
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
           initialization.getElapsedTime(), metadata.getElapsedTime(),
           io.getElapsedTime(), finalization.getElapsedTime());

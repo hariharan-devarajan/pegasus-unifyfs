@@ -1,14 +1,12 @@
 
-#include <catch_config.h>
+#include "catch_config.h"
 #include <test_utils.h>
 
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
 
 #include <fcntl.h>
-#include <mimir/api/posix.h>
 #include <mpi.h>
-#include "mimir/log/logger.h"
 /**
  * Test data structures
  */
@@ -102,31 +100,6 @@ TEST_CASE("Write",
   auto write_data = std::vector<char>(args.request_size, 'w');
   initialization.pauseTime();
 
-  using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::INDEPENDENT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration + 2);
-  file_advice._per_io_metadata = 2 / (args.iteration + 2);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
-
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  file_advice._name = filepath;
-  file_advice_begin(file_advice, file_handler);
-
   /** Main I/O **/
   metadata.resumeTime();
   int fd =
@@ -154,7 +127,6 @@ TEST_CASE("Write",
   finalization.resumeTime();
   printf("I/O performed on file %s\n", new_file.c_str());
   finalization.pauseTime();
-  file_advice_end(file_handler);
   fprintf(stdout,
           "Timing rank %d: init %f, metadata %f, io %f, and finalize %f.\n",
           my_rank, initialization.getElapsedTime(), metadata.getElapsedTime(),
@@ -180,33 +152,7 @@ TEST_CASE("Read",
   /** Prepare data **/
   auto read_data = std::vector<char>(args.request_size, 'r');
   initialization.pauseTime();
-  fprintf(stdout, "file to read %s\n", filepath.c_str());
 
-  using namespace mimir;
-
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::INDEPENDENT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration + 2);
-  file_advice._per_io_metadata = 2 / (args.iteration + 2);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
-
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  file_advice._name = filepath;
-  file_advice_begin(file_advice, file_handler);
   MPI_Barrier(MPI_COMM_WORLD);
   /** Main I/O **/
   metadata.resumeTime();
@@ -236,7 +182,6 @@ TEST_CASE("Read",
   finalization.resumeTime();
   printf("I/O performed on file %s\n", new_file.c_str());
   finalization.pauseTime();
-  file_advice_end(file_handler);
   fprintf(stdout,
           "Timing rank %d: init %f, metadata %f, io %f, and finalize %f.\n",
           my_rank, initialization.getElapsedTime(), metadata.getElapsedTime(),
@@ -273,29 +218,7 @@ TEST_CASE("ReadAfterWrite",
 
   using namespace mimir;
 
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::INDEPENDENT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
 
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  file_advice._name = filepath;
-  file_advice_begin(file_advice, file_handler);
 
   /** Write I/O **/
   metadata.resumeTime();
@@ -351,7 +274,6 @@ TEST_CASE("ReadAfterWrite",
   finalization.resumeTime();
   printf("Read I/O performed on file %s\n", new_file_read.c_str());
   finalization.pauseTime();
-  file_advice_end(file_handler);
   fprintf(stdout,
           "Timing rank %d: init %f, metadata %f, io %f, and finalize %f.\n",
           my_rank, initialization.getElapsedTime(), metadata.getElapsedTime(),
@@ -385,34 +307,7 @@ TEST_CASE("ReadAfterWriteShared",
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
   MPI_Barrier(MPI_COMM_WORLD);
   using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::SHARED_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
 
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  for (int i = 0; i < comm_size; ++i) {
-    auto filename = args.filename + "." + std::to_string(i) + "." +
-                    std::to_string(comm_size);
-    fs::path filepath = args.pfs / filename;
-    file_advice._name = filepath;
-    file_advice_begin(file_advice, file_handler);
-  }
 
   fs::create_directories(args.pfs);
   /** Clean existing file**/
@@ -464,7 +359,6 @@ TEST_CASE("ReadAfterWriteShared",
   metadata.pauseTime();
   REQUIRE(close_status == 0);
 
-  file_advice_end(file_handler);
   fprintf(stdout,
           "Timing rank %d: init %f, metadata %f, io %f, and finalize %f.\n",
           my_rank, initialization.getElapsedTime(), metadata.getElapsedTime(),
@@ -500,41 +394,10 @@ TEST_CASE("OnlyReadInputFiles",
                         std::to_string(args.request_size * args.iteration) +
                         "; } > " + filename.c_str() + " ";
       int status = system(cmd.c_str());
-      if (fs::exists(filename)) {
-        mimir::Logger::Instance("PEGASUS_TEST")
-            ->log(mimir::LOG_INFO, "written file %s", my_io_filename.c_str());
-      }
     }
   }
   MPI_Barrier(MPI_COMM_WORLD);
-  using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::INPUT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
 
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  for (int i = 0; i < comm_size; ++i) {
-    auto filename = args.pfs / (args.filename + "." + std::to_string(i) + "." +
-                                std::to_string(comm_size));
-    file_advice._name = filename;
-    file_advice_begin(file_advice, file_handler);
-  }
 
   /** Prepare data **/
   auto read_data = std::vector<char>(args.request_size, 'r');
@@ -563,7 +426,7 @@ TEST_CASE("OnlyReadInputFiles",
   metadata.pauseTime();
   REQUIRE(close_status == 0);
 
-  file_advice_end(file_handler);
+
   fprintf(stdout,
           "Timing rank %d: init %f, metadata %f, io %f, compute %f, and "
           "finalize %f.\n",
@@ -597,41 +460,10 @@ TEST_CASE("ReadOnly",
                         std::to_string(args.request_size * args.iteration) +
                         "; } > " + filename.c_str() + " ";
       int status = system(cmd.c_str());
-      if (fs::exists(filename)) {
-        mimir::Logger::Instance("PEGASUS_TEST")
-            ->log(mimir::LOG_INFO, "written file %s", my_io_filename.c_str());
-      }
     }
   }
   MPI_Barrier(MPI_COMM_WORLD);
-  using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::READ_ONLY_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
 
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  for (int i = 0; i < comm_size; ++i) {
-    auto filename = args.pfs / (args.filename + "." + std::to_string(i) + "." +
-                                std::to_string(comm_size));
-    file_advice._name = filename;
-    file_advice_begin(file_advice, file_handler);
-  }
 
   /** Prepare data **/
   auto read_data = std::vector<char>(args.request_size, 'r');
@@ -659,8 +491,6 @@ TEST_CASE("ReadOnly",
   int close_status = close(read_fd);
   metadata.pauseTime();
   REQUIRE(close_status == 0);
-
-  file_advice_end(file_handler);
   fprintf(stdout,
           "Timing rank %d: init %f, metadata %f, io %f, compute %f, and "
           "finalize %f.\n",
@@ -692,36 +522,6 @@ TEST_CASE("PriorityWrite",
                                "." + std::to_string(comm_size));
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
   MPI_Barrier(MPI_COMM_WORLD);
-  using namespace mimir;
-  MimirHandler file_handler;
-  FileAdvice file_advice;
-  file_advice._type._secondary = OperationAdviceType::PLACEMENT_FILE;
-  file_advice._per_io_data = args.iteration / (args.iteration * 2 + 4);
-  file_advice._per_io_metadata = 4 / (args.iteration * 2 + 4);
-  file_advice._size_mb = args.request_size * args.iteration / MB;
-  file_advice._current_device = 1;
-  file_advice._placement_device = 1;
-
-  if (args.request_size >= 0 && args.request_size < 4 * KB)
-    file_advice._write_distribution._0_4kb = 1.0;
-  else if (args.request_size >= 4 * KB && args.request_size < 64 * KB)
-    file_advice._write_distribution._4_64kb = 1.0;
-  if (args.request_size >= 64 * KB && args.request_size < 1 * MB)
-    file_advice._write_distribution._64kb_1mb = 1.0;
-  if (args.request_size >= 1 * MB && args.request_size < 16 * MB)
-    file_advice._write_distribution._1mb_16mb = 1.0;
-  if (args.request_size >= 16 * MB) file_advice._write_distribution._16mb = 1.0;
-
-  file_advice._io_amount_mb = args.request_size * args.iteration * 2 / MB;
-  file_advice._format = Format::FORMAT_BINARY;
-  file_advice._priority = 100;
-  for (int i = 0; i < comm_size; ++i) {
-    auto filename = args.filename + "." + std::to_string(i) + "." +
-                    std::to_string(comm_size);
-    fs::path filepath = args.pfs / filename;
-    file_advice._name = filepath;
-    file_advice_begin(file_advice, file_handler);
-  }
 
   fs::create_directories(args.pfs);
   /** Clean existing file**/
@@ -773,7 +573,6 @@ TEST_CASE("PriorityWrite",
   metadata.pauseTime();
   REQUIRE(close_status == 0);
 
-  file_advice_end(file_handler);
   fprintf(stdout,
           "Timing rank %d: init %f, metadata %f, io %f, and finalize %f.\n",
           my_rank, initialization.getElapsedTime(), metadata.getElapsedTime(),

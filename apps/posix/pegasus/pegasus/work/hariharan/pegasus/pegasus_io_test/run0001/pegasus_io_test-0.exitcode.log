@@ -1,6 +1,0 @@
-{"name": ".//00/00/create_dir_pegasus_io_test_0_condorpool.out", "timestamp": "2022-02-21T12:46:09.493953", "exitcode": 0, "app_exitcode": 0, "retry": 0, "std_out": "", "std_err": ""}
-{"name": ".//00/00/pegasus_raw_ID0000001.out", "timestamp": "2022-02-21T12:46:29.784571", "exitcode": 0, "app_exitcode": 0, "retry": 0, "std_out": "", "std_err": ""}
-{"name": ".//00/00/pegasus_write_ID0000002.out", "timestamp": "2022-02-21T12:46:29.786132", "exitcode": 0, "app_exitcode": 0, "retry": 0, "std_out": "", "std_err": ""}
-{"name": ".//00/00/pegasus_read_ID0000003.out", "timestamp": "2022-02-21T12:46:45.029799", "exitcode": 0, "app_exitcode": 0, "retry": 0, "std_out": "", "std_err": ""}
-{"name": ".//00/00/clean_up_condorpool_level_3_0.out", "timestamp": "2022-02-21T12:46:59.277651", "exitcode": 0, "app_exitcode": 0, "retry": 0, "std_out": "", "std_err": ""}
-{"name": ".//00/00/cleanup_pegasus_io_test_0_condorpool.out", "timestamp": "2022-02-21T12:47:14.526073", "exitcode": 0, "app_exitcode": 0, "retry": 0, "std_out": "", "std_err": ""}

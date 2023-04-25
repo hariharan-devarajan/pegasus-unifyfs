@@ -4,7 +4,7 @@
 #else
 #include <fcntl.h>
 #endif
-#include <catch_config.h>
+#include "catch_config.h"
 #include <test_utils.h>
 #include <unistd.h>
 

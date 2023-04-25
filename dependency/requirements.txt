@@ -1,2 +1,2 @@
-pegasus
 pegasus-wms.api
+GitPython
