@@ -147,6 +147,11 @@ class MimirWorkflow:
 
     # --- Create Workflow -----------------------------------------------------
     def create_workflow(self):
+        ld_preload = ""
+        if self.intercept:
+            if "UNIFYFS_LIB_PATH" not in os.environ:
+                raise Exception('UNIFYFS_LIB_PATH not set. Needs to point to libunifyfs_gotcha.so.')
+            ld_preload = os.environ["UNIFYFS_LIB_PATH"]
         self.wf = Workflow(self.wf_name, infer_dependencies=True)
         if self.intercept:
             path = "/unifyfs"
@@ -160,6 +165,8 @@ class MimirWorkflow:
                     .add_args("--durations", "yes", "--reporter", "compact",
                               "--pfs", self.data, "--filename", f"raw_{i}.dat", "[operation=raw]")
             )
+            if self.intercept:
+                raw.add_profiles(Namespace.ENV, key="LD_PRELOAD", value=ld_preload)
             raws.append(raw)
         # Read job depends on Write job.
         reads = []
@@ -173,12 +180,16 @@ class MimirWorkflow:
                               "--pfs", path, "--filename", filename, "[operation=write]")
                     .add_outputs(file_data, stage_out=False, register_replica=False)
             )
+            if self.intercept:
+                write.add_profiles(Namespace.ENV, key="LD_PRELOAD", value=ld_preload)
             read = (
                 Job("pegasus_read")
                     .add_args("--durations", "yes", "--reporter", "compact",
                               "--pfs", path, "--filename", filename, "[operation=read]")
                     .add_inputs(file_data)
             )
+            if self.intercept:
+                read.add_profiles(Namespace.ENV, key="LD_PRELOAD", value=ld_preload)
             writes.append(write)
             reads.append(read)
 
