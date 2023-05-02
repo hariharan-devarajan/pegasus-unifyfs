@@ -109,34 +109,21 @@ class MimirWorkflow:
 
         executable_path = Path(shutil.which('pegasus-status')).parent.parent.absolute();
         path = self.bin
-        filename = os.path.join(path, "pegasus")
-
         ld_preload = ""
         if self.intercept:
             if "UNIFYFS_LIB_PATH" not in os.environ:
                 raise Exception('UNIFYFS_LIB_PATH not set. Needs to point to libunifyfs_gotcha.so.')
             ld_preload = os.environ["UNIFYFS_LIB_PATH"]
+            #path = "/unifyfs"
+        filename = os.path.join(path, "pegasus")
         raw = Transformation(
             "pegasus_raw", site=exec_site_name, pfn=filename, is_stageable=False,
-        )
-        shared = Transformation(
-            "pegasus_shared", site=exec_site_name, pfn=filename, is_stageable=False,
         )
         write = Transformation(
             "pegasus_write", site=exec_site_name, pfn=filename, is_stageable=False,
         )
         read = Transformation(
             "pegasus_read", site=exec_site_name, pfn=filename, is_stageable=False,
-        )
-        input = Transformation(
-            "pegasus_input", site=exec_site_name, pfn=filename, is_stageable=False,
-        )
-        read_only = Transformation(
-            "pegasus_read_only", site=exec_site_name, pfn=filename, is_stageable=False,
-        )
-
-        priority = Transformation(
-            "pegasus_priority", site=exec_site_name, pfn=filename, is_stageable=False,
         )
         if self.pmc:
             pmc_wrapper_pfn = self.src_path + '/pmc_wrapper.sh'
@@ -151,7 +138,7 @@ class MimirWorkflow:
                     .add_profiles(Namespace.CONDOR, key="getenv", value="*")
             )
             self.tc.add_transformations(pmc)
-        self.tc.add_transformations(shared, raw, write, read, input, read_only, priority)
+        self.tc.add_transformations(raw, write, read)
         # self.tc.add_transformations(write, read)
 
     # --- Replica Catalog ------------------------------------------------------
@@ -161,7 +148,10 @@ class MimirWorkflow:
     # --- Create Workflow -----------------------------------------------------
     def create_workflow(self):
         self.wf = Workflow(self.wf_name, infer_dependencies=True)
-
+        if self.intercept:
+            path = "/unifyfs"
+        else:
+            path = self.data
         # RAW usecase no job dependency.
         raws = []
         for i in range(self.jobs):
@@ -180,54 +170,19 @@ class MimirWorkflow:
             write = (
                 Job("pegasus_write")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.data, "--filename", filename, "[operation=write]")
+                              "--pfs", path, "--filename", filename, "[operation=write]")
                     .add_outputs(file_data, stage_out=False, register_replica=False)
             )
             read = (
                 Job("pegasus_read")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.data, "--filename", filename, "[operation=read]")
+                              "--pfs", path, "--filename", filename, "[operation=read]")
                     .add_inputs(file_data)
             )
             writes.append(write)
             reads.append(read)
-        inputs = []
-        for i in range(self.jobs):
-            input = (
-                Job("pegasus_input")
-                    .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.data, "--filename", f"input_{i}.dat", "[operation=input]")
-            )
-            inputs.append(input)
-        priorities = []
-        for i in range(self.jobs):
-            priority = (
-                Job("pegasus_priority")
-                    .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.data, "--filename", f"priority_{i}.dat",
-                              "[operation=priority_write]")
-            )
-            priorities.append(priority)
-        read_onlys = []
-        for i in range(self.jobs):
-            read_only = (
-                Job("pegasus_read_only")
-                    .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.data, "--filename", f"read_only_{i}.dat",
-                              "[operation=read_only]")
-            )
-            read_onlys.append(read_only)
-        # shared
-        shareds = []
-        for i in range(self.jobs):
-            shared = (
-                Job("pegasus_shared")
-                    .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.data, "--filename", f"shared_job_{i}.dat",
-                              "[operation=raw_shared]")
-            )
-            shareds.append(shared)
-        self.wf.add_jobs(*shareds, raw, *writes, *reads, *inputs, *read_onlys, *priorities)
+
+        self.wf.add_jobs(raw, *writes, *reads)
         # self.wf.add_jobs(write, read)
 
 

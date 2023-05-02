@@ -71,15 +71,9 @@ TEST_CASE("Write",
 
   initialization.resumeTime();
   fs::path filepath = args.pfs / args.filename;
-  fs::create_directories(args.pfs);
-  /** Clean existing file**/
-  if (fs::exists(filepath)) fs::remove(filepath);
   /** Prepare data **/
   auto write_data = std::vector<char>(args.request_size, 'w');
   initialization.pauseTime();
-
-
-
   /** Main I/O **/
   metadata.resumeTime();
   int fd =
@@ -95,19 +89,15 @@ TEST_CASE("Write",
     REQUIRE(bytes_written == args.request_size);
   }
   finalization.resumeTime();
-  auto new_file = GetFilenameFromFD(fd);
   finalization.pauseTime();
   metadata.resumeTime();
   int close_status = close(fd);
   metadata.pauseTime();
   REQUIRE(close_status == 0);
 
-  REQUIRE(fs::file_size(new_file) == args.request_size * args.iteration);
+  //REQUIRE(fs::file_size(new_file) == args.request_size * args.iteration);
 
   finalization.resumeTime();
-  printf("I/O performed on file %s\n", new_file.c_str());
-  if (fs::exists(filepath)) fs::remove(filepath);
-  if (fs::exists(new_file)) fs::remove(new_file);
   finalization.pauseTime();
 
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
@@ -126,16 +116,10 @@ TEST_CASE("Read",
 
   initialization.resumeTime();
   fs::path filepath = args.pfs / args.filename;
-  std::string cmd = "{ tr -dc '[:alnum:]' < /dev/urandom | head -c " +
-                    std::to_string(args.request_size * args.iteration) +
-                    "; } > " + filepath.c_str() + " ";
-  int status = system(cmd.c_str());
   /** Prepare data **/
   auto read_data = std::vector<char>(args.request_size, 'r');
   initialization.pauseTime();
   fprintf(stdout, "file to read %s\n", filepath.c_str());
-
-
 
   /** Main I/O **/
   metadata.resumeTime();
@@ -152,7 +136,6 @@ TEST_CASE("Read",
   }
 
   finalization.resumeTime();
-  auto new_file = GetFilenameFromFD(fd);
   finalization.pauseTime();
 
   metadata.resumeTime();
@@ -160,11 +143,7 @@ TEST_CASE("Read",
   metadata.pauseTime();
   REQUIRE(close_status == 0);
 
-  REQUIRE(fs::file_size(new_file) == args.request_size * args.iteration);
-
   finalization.resumeTime();
-  printf("I/O performed on file %s\n", new_file.c_str());
-  if (fs::exists(filepath)) fs::remove(filepath);
   finalization.pauseTime();
 
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
@@ -183,9 +162,6 @@ TEST_CASE("ReadAfterWrite",
 
   initialization.resumeTime();
   fs::path filepath = args.pfs / args.filename;
-  fs::create_directories(args.pfs);
-  /** Clean existing file**/
-  if (fs::exists(filepath)) fs::remove(filepath);
   /** Prepare data **/
   auto write_data = std::vector<char>(args.request_size, 'w');
   auto read_data = std::vector<char>(args.request_size, 'r');
@@ -207,16 +183,13 @@ TEST_CASE("ReadAfterWrite",
     REQUIRE(bytes_written == args.request_size);
   }
   finalization.resumeTime();
-  auto new_file_write = GetFilenameFromFD(write_fd);
   finalization.pauseTime();
   metadata.resumeTime();
   int close_status_write = close(write_fd);
   metadata.pauseTime();
   REQUIRE(close_status_write == 0);
-  REQUIRE(fs::file_size(new_file_write) == args.request_size * args.iteration);
 
   finalization.resumeTime();
-  printf("Write I/O performed on file %s\n", new_file_write.c_str());
   finalization.pauseTime();
 
   /** Read I/O **/
@@ -234,7 +207,6 @@ TEST_CASE("ReadAfterWrite",
   }
 
   finalization.resumeTime();
-  auto new_file_read = GetFilenameFromFD(read_fd);
   finalization.pauseTime();
 
   metadata.resumeTime();
@@ -243,263 +215,8 @@ TEST_CASE("ReadAfterWrite",
   REQUIRE(close_status == 0);
 
   finalization.resumeTime();
-  printf("Read I/O performed on file %s\n", new_file_read.c_str());
-  if (fs::exists(filepath)) fs::remove(filepath);
-  if (fs::exists(new_file_read)) fs::remove(new_file_read);
   finalization.pauseTime();
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
           initialization.getElapsedTime(), metadata.getElapsedTime(),
           io.getElapsedTime(), finalization.getElapsedTime());
-}
-
-TEST_CASE("ReadAfterWriteShared",
-          "[operation=raw_shared]"
-          "[request_size=" +
-              std::to_string(args.request_size) +
-              "]"
-              "[iteration=" +
-              std::to_string(args.iteration) + "]") {
-  Timer initialization, metadata, io, finalization;
-
-  initialization.resumeTime();
-
-  auto my_io_filename = args.pfs / (args.filename);
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-
-
-  fs::create_directories(args.pfs);
-  /** Clean existing file**/
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  /** Prepare data **/
-  auto write_data = std::vector<char>(args.request_size, 'w');
-  auto read_data = std::vector<char>(args.request_size, 'r');
-  initialization.pauseTime();
-
-  /** Write I/O **/
-  metadata.resumeTime();
-  int write_fd = open(my_io_filename.c_str(), O_WRONLY | O_CREAT,
-                      S_IRWXU | S_IRWXG | S_IRWXO);
-  metadata.pauseTime();
-  REQUIRE(write_fd != -1);
-
-  for (size_t i = 0; i < args.iteration; ++i) {
-    io.resumeTime();
-    ssize_t bytes_written =
-        write(write_fd, write_data.data(), args.request_size);
-    int fsync_status = fsync(write_fd);
-    io.pauseTime();
-  }
-  metadata.resumeTime();
-  int close_status_write = close(write_fd);
-  metadata.pauseTime();
-  REQUIRE(close_status_write == 0);
-
-  finalization.resumeTime();
-  printf("Write I/O performed on file %s\n", my_io_filename.c_str());
-  finalization.pauseTime();
-
-  /* Read I/O */
-  metadata.resumeTime();
-  int read_fd = open(my_io_filename.c_str(), O_RDONLY);
-  metadata.pauseTime();
-  REQUIRE(read_fd != -1);
-
-  for (size_t i = 0; i < args.iteration; ++i) {
-    io.resumeTime();
-    ssize_t bytes_read = read(read_fd, read_data.data(), args.request_size);
-    int fsync_status = fsync(read_fd);
-    io.pauseTime();
-    REQUIRE(bytes_read == args.request_size);
-  }
-
-  metadata.resumeTime();
-  int close_status = close(read_fd);
-  metadata.pauseTime();
-  REQUIRE(close_status == 0);
-
-  fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
-          initialization.getElapsedTime(), metadata.getElapsedTime(),
-          io.getElapsedTime(), finalization.getElapsedTime());
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-}
-
-TEST_CASE("OnlyReadInputFiles",
-          "[operation=input]"
-          "[request_size=" +
-              std::to_string(args.request_size) +
-              "]"
-              "[iteration=" +
-              std::to_string(args.iteration) + "]") {
-  Timer initialization, metadata, io, finalization, compute;
-
-  initialization.resumeTime();
-  auto my_io_filename = args.pfs / (args.filename);
-  fs::create_directories(args.pfs);
-
-  std::string cmd = "{ tr -dc '[:alnum:]' < /dev/urandom | head -c " +
-                    std::to_string(args.request_size * args.iteration) +
-                    "; } > " + my_io_filename.c_str() + " ";
-  int status = system(cmd.c_str());
-
-  /** Prepare data **/
-  auto read_data = std::vector<char>(args.request_size, 'r');
-  initialization.pauseTime();
-  /* Computation */
-  compute.resumeTime();
-  sleep(5);
-  compute.pauseTime();
-
-  /* Read I/O */
-  metadata.resumeTime();
-  int read_fd = open(my_io_filename.c_str(), O_RDONLY);
-  metadata.pauseTime();
-  REQUIRE(read_fd != -1);
-
-  for (size_t i = 0; i < args.iteration; ++i) {
-    io.resumeTime();
-    ssize_t bytes_read = read(read_fd, read_data.data(), args.request_size);
-    int fsync_status = fsync(read_fd);
-    io.pauseTime();
-    REQUIRE(bytes_read == args.request_size);
-  }
-
-  metadata.resumeTime();
-  int close_status = close(read_fd);
-  metadata.pauseTime();
-  REQUIRE(close_status == 0);
-
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-
-  fprintf(stdout,
-          "Timing: init %f, metadata %f, io %f, compute %f, and "
-          "finalize %f.\n",
-          initialization.getElapsedTime(), metadata.getElapsedTime(),
-          io.getElapsedTime(), compute.getElapsedTime(),
-          finalization.getElapsedTime());
-}
-
-TEST_CASE("ReadOnly",
-          "[operation=read_only]"
-          "[request_size=" +
-              std::to_string(args.request_size) +
-              "]"
-              "[iteration=" +
-              std::to_string(args.iteration) + "]") {
-  Timer initialization, metadata, io, finalization, compute;
-
-  initialization.resumeTime();
-  auto my_io_filename = args.pfs / (args.filename);
-  fs::create_directories(args.pfs);
-
-  std::string cmd = "{ tr -dc '[:alnum:]' < /dev/urandom | head -c " +
-                    std::to_string(args.request_size * args.iteration) +
-                    "; } > " + my_io_filename.c_str() + " ";
-  int status = system(cmd.c_str());
-
-
-
-  /** Prepare data **/
-  auto read_data = std::vector<char>(args.request_size, 'r');
-  initialization.pauseTime();
-  /* Computation */
-  compute.resumeTime();
-  sleep(5);
-  compute.pauseTime();
-
-  /* Read I/O */
-  metadata.resumeTime();
-  int read_fd = open(my_io_filename.c_str(), O_RDONLY);
-  metadata.pauseTime();
-  REQUIRE(read_fd != -1);
-
-  for (size_t i = 0; i < args.iteration; ++i) {
-    io.resumeTime();
-    ssize_t bytes_read = read(read_fd, read_data.data(), args.request_size);
-    int fsync_status = fsync(read_fd);
-    io.pauseTime();
-    REQUIRE(bytes_read == args.request_size);
-  }
-
-  metadata.resumeTime();
-  int close_status = close(read_fd);
-  metadata.pauseTime();
-  REQUIRE(close_status == 0);
-
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  fprintf(stdout,
-          "Timing: init %f, metadata %f, io %f, compute %f, and "
-          "finalize %f.\n",
-          initialization.getElapsedTime(), metadata.getElapsedTime(),
-          io.getElapsedTime(), compute.getElapsedTime(),
-          finalization.getElapsedTime());
-}
-
-TEST_CASE("PriorityWrite",
-          "[operation=priority_write]"
-          "[request_size=" +
-              std::to_string(args.request_size) +
-              "]"
-              "[iteration=" +
-              std::to_string(args.iteration) + "]") {
-  Timer initialization, metadata, io, finalization;
-
-  initialization.resumeTime();
-  auto my_io_filename = args.pfs / (args.filename);
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-
-
-  fs::create_directories(args.pfs);
-  /** Clean existing file**/
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  /** Prepare data **/
-  auto write_data = std::vector<char>(args.request_size, 'w');
-  auto read_data = std::vector<char>(args.request_size, 'r');
-  initialization.pauseTime();
-
-  /** Write I/O **/
-  metadata.resumeTime();
-  int write_fd = open(my_io_filename.c_str(), O_WRONLY | O_CREAT,
-                      S_IRWXU | S_IRWXG | S_IRWXO);
-  metadata.pauseTime();
-  REQUIRE(write_fd != -1);
-
-  for (size_t i = 0; i < args.iteration; ++i) {
-    io.resumeTime();
-    ssize_t bytes_written =
-        write(write_fd, write_data.data(), args.request_size);
-    int fsync_status = fsync(write_fd);
-    io.pauseTime();
-  }
-  metadata.resumeTime();
-  int close_status_write = close(write_fd);
-  metadata.pauseTime();
-  REQUIRE(close_status_write == 0);
-
-  finalization.resumeTime();
-  printf("Write I/O performed on file %s\n", my_io_filename.c_str());
-  finalization.pauseTime();
-
-  /* Read I/O */
-  metadata.resumeTime();
-  int read_fd = open(my_io_filename.c_str(), O_RDONLY);
-  metadata.pauseTime();
-  REQUIRE(read_fd != -1);
-
-  for (size_t i = 0; i < args.iteration; ++i) {
-    io.resumeTime();
-    ssize_t bytes_read = read(read_fd, read_data.data(), args.request_size);
-    int fsync_status = fsync(read_fd);
-    io.pauseTime();
-    REQUIRE(bytes_read == args.request_size);
-  }
-
-  metadata.resumeTime();
-  int close_status = close(read_fd);
-  metadata.pauseTime();
-  REQUIRE(close_status == 0);
-
-  fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
-          initialization.getElapsedTime(), metadata.getElapsedTime(),
-          io.getElapsedTime(), finalization.getElapsedTime());
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
 }

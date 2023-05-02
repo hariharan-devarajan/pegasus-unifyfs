@@ -72,7 +72,7 @@ macro(iteration_mpi example operations)
 endmacro()
 
 
-set(operations write raw)
+set(operations write read raw)
 iteration(pegasus operations)
 
 set(operations write raw raw_shared input read_only priority_write)
