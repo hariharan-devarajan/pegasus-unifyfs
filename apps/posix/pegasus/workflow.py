@@ -26,23 +26,20 @@ class MimirWorkflow:
     pmc = None
     intercept = None
 
-    mimir_bin = None
-    pfs = None
-    shm = None
+    bin = None
+    data = None
     jobs = None
 
     # --- Init ----------------------------------------------------------------
     def __init__(self,
-                 mimir_bin,
-                 pfs,
-                 shm,
+                 bin,
+                 data,
                  jobs,
                  pmc,
                  intercept):
-        self.mimir_bin = mimir_bin
+        self.bin = bin
         self.jobs = jobs
-        self.pfs = pfs
-        self.shm = shm
+        self.data = data
         self.dagfile = "workflow.yml"
         self.wf_name = "pegasus_io_test"
         self.wf_dir = str(Path(__file__).parent.resolve())
@@ -111,15 +108,14 @@ class MimirWorkflow:
         self.tc = TransformationCatalog()
 
         executable_path = Path(shutil.which('pegasus-status')).parent.parent.absolute();
-        path = self.mimir_bin
+        path = self.bin
         filename = os.path.join(path, "pegasus")
-        filename_mpi = os.path.join(path, "pegasus_mpi")
 
         ld_preload = ""
         if self.intercept:
-            if "ATHENA_LIB_PATH" not in os.environ:
-                raise Exception('ATHENA_LIB_PATH not set. Needs to point to libathena.so.')
-            ld_preload = os.environ["ATHENA_LIB_PATH"]
+            if "UNIFYFS_LIB_PATH" not in os.environ:
+                raise Exception('UNIFYFS_LIB_PATH not set. Needs to point to libunifyfs_gotcha.so.')
+            ld_preload = os.environ["UNIFYFS_LIB_PATH"]
         raw = Transformation(
             "pegasus_raw", site=exec_site_name, pfn=filename, is_stageable=False,
         )
@@ -152,8 +148,6 @@ class MimirWorkflow:
                     .add_profiles(Namespace.ENV, key="PATH", value=path)
                     .add_profiles(Namespace.ENV, key="PEGASUS_HOME", value=f"{executable_path}")
                     .add_profiles(Namespace.ENV, key="LD_PRELOAD2", value=f"{ld_preload}")
-                    .add_profiles(Namespace.ENV, key="PFS_PATH", value=self.pfs)
-                    .add_profiles(Namespace.ENV, key="SHM_PATH", value=self.shm)
                     .add_profiles(Namespace.CONDOR, key="getenv", value="*")
             )
             self.tc.add_transformations(pmc)
@@ -174,9 +168,7 @@ class MimirWorkflow:
             raw = (
                 Job("pegasus_raw")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.pfs, "--shm", self.shm, "--filename", f"raw_{i}.dat", "[operation=raw]")
-                    .add_profiles(Namespace.ENV, key="PFS_PATH", value=self.pfs)
-                    .add_profiles(Namespace.ENV, key="SHM_PATH", value=self.shm)
+                              "--pfs", self.data, "--filename", f"raw_{i}.dat", "[operation=raw]")
             )
             raws.append(raw)
         # Read job depends on Write job.
@@ -188,18 +180,14 @@ class MimirWorkflow:
             write = (
                 Job("pegasus_write")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.pfs, "--shm", self.shm, "--filename", filename, "[operation=write]")
+                              "--pfs", self.data, "--filename", filename, "[operation=write]")
                     .add_outputs(file_data, stage_out=False, register_replica=False)
-                    .add_profiles(Namespace.ENV, key="PFS_PATH", value=self.pfs)
-                    .add_profiles(Namespace.ENV, key="SHM_PATH", value=self.shm)
             )
             read = (
                 Job("pegasus_read")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.pfs, "--shm", self.shm, "--filename", filename, "[operation=read]")
+                              "--pfs", self.data, "--filename", filename, "[operation=read]")
                     .add_inputs(file_data)
-                    .add_profiles(Namespace.ENV, key="PFS_PATH", value=self.pfs)
-                    .add_profiles(Namespace.ENV, key="SHM_PATH", value=self.shm)
             )
             writes.append(write)
             reads.append(read)
@@ -208,9 +196,7 @@ class MimirWorkflow:
             input = (
                 Job("pegasus_input")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.pfs, "--shm", self.shm, "--filename", f"input_{i}.dat", "[operation=input]")
-                    .add_profiles(Namespace.ENV, key="PFS_PATH", value=self.pfs)
-                    .add_profiles(Namespace.ENV, key="SHM_PATH", value=self.shm)
+                              "--pfs", self.data, "--filename", f"input_{i}.dat", "[operation=input]")
             )
             inputs.append(input)
         priorities = []
@@ -218,10 +204,8 @@ class MimirWorkflow:
             priority = (
                 Job("pegasus_priority")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.pfs, "--shm", self.shm, "--filename", f"priority_{i}.dat",
+                              "--pfs", self.data, "--filename", f"priority_{i}.dat",
                               "[operation=priority_write]")
-                    .add_profiles(Namespace.ENV, key="PFS_PATH", value=self.pfs)
-                    .add_profiles(Namespace.ENV, key="SHM_PATH", value=self.shm)
             )
             priorities.append(priority)
         read_onlys = []
@@ -229,10 +213,8 @@ class MimirWorkflow:
             read_only = (
                 Job("pegasus_read_only")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.pfs, "--shm", self.shm, "--filename", f"read_only_{i}.dat",
+                              "--pfs", self.data, "--filename", f"read_only_{i}.dat",
                               "[operation=read_only]")
-                    .add_profiles(Namespace.ENV, key="PFS_PATH", value=self.pfs)
-                    .add_profiles(Namespace.ENV, key="SHM_PATH", value=self.shm)
             )
             read_onlys.append(read_only)
         # shared
@@ -241,10 +223,8 @@ class MimirWorkflow:
             shared = (
                 Job("pegasus_shared")
                     .add_args("--durations", "yes", "--reporter", "compact",
-                              "--pfs", self.pfs, "--shm", self.shm, "--filename", f"shared_job_{i}.dat",
+                              "--pfs", self.data, "--filename", f"shared_job_{i}.dat",
                               "[operation=raw_shared]")
-                    .add_profiles(Namespace.ENV, key="PFS_PATH", value=self.pfs)
-                    .add_profiles(Namespace.ENV, key="SHM_PATH", value=self.shm)
             )
             shareds.append(shared)
         self.wf.add_jobs(*shareds, raw, *writes, *reads, *inputs, *read_onlys, *priorities)
@@ -255,25 +235,18 @@ if __name__ == "__main__":
     parser = ArgumentParser(description="Pegasus Write + Read Workflow")
 
     parser.add_argument(
-        "--pfs",
+        "--data",
         metavar="STR",
         type=str,
         default="${PWD}",
-        help="Path for PFS",
+        help="Path for data",
     )
     parser.add_argument(
-        "--shm",
-        metavar="STR",
-        type=str,
-        default="/dev/shm",
-        help="Path for SHM",
-    )
-    parser.add_argument(
-        "--mimir_bin",
+        "--bin",
         metavar="STR",
         type=str,
         default="${PWD}",
-        help="Binary directory for Mimir tests",
+        help="Binary directory for tests",
     )
     parser.add_argument(
         "--jobs",
@@ -281,12 +254,11 @@ if __name__ == "__main__":
         default=8,
         help="# of jobs per type of test",
     )
-    parser.add_argument('--intercept', action='store_true', dest='intercept', help='Intercept using Athena')
+    parser.add_argument('--intercept', action='store_true', default=False, dest='intercept', help='Intercept using Unifyfs')
     parser.add_argument('--pmc', action='store_true', dest='pmc', help='Use PMC')
 
     args = parser.parse_args()
-
-    workflow = MimirWorkflow(args.mimir_bin, args.pfs, args.shm, args.jobs, args.pmc, args.intercept)
+    workflow = MimirWorkflow(args.bin, args.data, args.jobs, args.pmc, args.intercept)
 
     print("Creating execution sites...")
     workflow.create_sites_catalog()

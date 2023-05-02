@@ -1,8 +1,6 @@
 #!/bin/bash
 
-cp ../workflow.py .
-cp ../pmc_wrapper.sh .
-export UNIFYFS_LIB_PATH=/home/hariharan/CLionProjects/mimir/build/libathena.so
-python workflow.py --mimir_bin /home/hariharan/CLionProjects/mimir/build/test/posix/ --pfs /home/hariharan/temp/mimir/pfs --shm /home/hariharan/temp/mimir/shm --jobs 16 --intercept --pmc
+export UNIFYFS_LIB_PATH=/usr/WS2/iopp/software/pegasus-unifyfs/dependency/.spack-env/view/lib/libunifyfs_gotcha.so
+python workflow.py --bin /usr/WS2/iopp/software/pegasus-unifyfs/build/apps/posix --data /p/gpfs1/iopp/temp/unifyfs/data --jobs 1 --intercept --pmc
 
-pegasus-plan --dir work --dax workflow.yml --output-site local --cluster whole
+pegasus-plan --dir work --relative-dir run --dax workflow.yml --output-site local --cluster whole

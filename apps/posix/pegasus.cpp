@@ -13,7 +13,6 @@ namespace fs = std::experimental::filesystem;
 namespace mimir::test {
 struct Arguments {
   fs::path pfs = "/home/haridev/pfs";
-  fs::path shm = "/dev/shm/haridev";
   std::string filename = "test.dat";
   size_t request_size = 65536;
   size_t iteration = 64;
@@ -38,8 +37,6 @@ cl::Parser define_options() {
              "Filename to be use for I/O.") |
          cl::Opt(args.pfs, "pfs")["-p"]["--pfs"](
              "Directory used for performing I/O (default pfs)") |
-         cl::Opt(args.shm, "shm")["-s"]["--shm"](
-             "Directory used for performing I/O (default shm)") |
          cl::Opt(args.request_size, "request_size")["-r"]["--request_size"](
              "Transfer size used for performing I/O") |
          cl::Opt(args.iteration,
@@ -129,15 +126,10 @@ TEST_CASE("Read",
 
   initialization.resumeTime();
   fs::path filepath = args.pfs / args.filename;
-  fs::path shm_filepath = args.shm / args.filename;
   std::string cmd = "{ tr -dc '[:alnum:]' < /dev/urandom | head -c " +
                     std::to_string(args.request_size * args.iteration) +
                     "; } > " + filepath.c_str() + " ";
   int status = system(cmd.c_str());
-  cmd = "{ tr -dc '[:alnum:]' < /dev/urandom | head -c " +
-        std::to_string(args.request_size * args.iteration) + "; } > " +
-        shm_filepath.c_str() + " ";
-  status = system(cmd.c_str());
   /** Prepare data **/
   auto read_data = std::vector<char>(args.request_size, 'r');
   initialization.pauseTime();
@@ -173,7 +165,6 @@ TEST_CASE("Read",
   finalization.resumeTime();
   printf("I/O performed on file %s\n", new_file.c_str());
   if (fs::exists(filepath)) fs::remove(filepath);
-  if (fs::exists(shm_filepath)) fs::remove(shm_filepath);
   finalization.pauseTime();
 
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
@@ -272,9 +263,7 @@ TEST_CASE("ReadAfterWriteShared",
 
   initialization.resumeTime();
 
-  auto my_io_filename = args.shm / (args.filename);
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  my_io_filename = args.pfs / (args.filename);
+  auto my_io_filename = args.pfs / (args.filename);
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
 
 
@@ -332,8 +321,6 @@ TEST_CASE("ReadAfterWriteShared",
           initialization.getElapsedTime(), metadata.getElapsedTime(),
           io.getElapsedTime(), finalization.getElapsedTime());
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  my_io_filename = args.shm / (args.filename);
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
 }
 
 TEST_CASE("OnlyReadInputFiles",
@@ -347,7 +334,6 @@ TEST_CASE("OnlyReadInputFiles",
 
   initialization.resumeTime();
   auto my_io_filename = args.pfs / (args.filename);
-  auto my_io_filename_shm = args.shm / (args.filename);
   fs::create_directories(args.pfs);
 
   std::string cmd = "{ tr -dc '[:alnum:]' < /dev/urandom | head -c " +
@@ -383,7 +369,6 @@ TEST_CASE("OnlyReadInputFiles",
   REQUIRE(close_status == 0);
 
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  if (fs::exists(my_io_filename_shm)) fs::remove(my_io_filename_shm);
 
   fprintf(stdout,
           "Timing: init %f, metadata %f, io %f, compute %f, and "
@@ -404,7 +389,6 @@ TEST_CASE("ReadOnly",
 
   initialization.resumeTime();
   auto my_io_filename = args.pfs / (args.filename);
-  auto my_io_filename_shm = args.shm / (args.filename);
   fs::create_directories(args.pfs);
 
   std::string cmd = "{ tr -dc '[:alnum:]' < /dev/urandom | head -c " +
@@ -442,7 +426,6 @@ TEST_CASE("ReadOnly",
   REQUIRE(close_status == 0);
 
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  if (fs::exists(my_io_filename_shm)) fs::remove(my_io_filename_shm);
   fprintf(stdout,
           "Timing: init %f, metadata %f, io %f, compute %f, and "
           "finalize %f.\n",
@@ -461,10 +444,7 @@ TEST_CASE("PriorityWrite",
   Timer initialization, metadata, io, finalization;
 
   initialization.resumeTime();
-
-  auto my_io_filename = args.shm / (args.filename);
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  my_io_filename = args.pfs / (args.filename);
+  auto my_io_filename = args.pfs / (args.filename);
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
 
 
@@ -521,7 +501,5 @@ TEST_CASE("PriorityWrite",
   fprintf(stdout, "Timing: init %f, metadata %f, io %f, and finalize %f.\n",
           initialization.getElapsedTime(), metadata.getElapsedTime(),
           io.getElapsedTime(), finalization.getElapsedTime());
-  if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
-  my_io_filename = args.shm / (args.filename);
   if (fs::exists(my_io_filename)) fs::remove(my_io_filename);
 }

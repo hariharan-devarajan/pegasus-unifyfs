@@ -1,6 +1,0 @@
-x-pegasus:
-  apiLang: python
-  createdBy: hariharan
-  createdOn: 02-21-22T12:45:55Z
-pegasus: '5.0'
-replicas: []
