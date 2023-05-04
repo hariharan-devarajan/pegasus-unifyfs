@@ -112,7 +112,7 @@ class MimirWorkflow:
         ld_preload = ""
         if self.intercept:
             if "UNIFYFS_LIB_PATH" not in os.environ:
-                raise Exception('UNIFYFS_LIB_PATH not set. Needs to point to libunifyfs_gotcha.so.')
+                raise Exception('UNIFYFS_LIB_PATH not set. Needs to point to libunifyfs_preload_gotcha.so.')
             ld_preload = os.environ["UNIFYFS_LIB_PATH"]
             #path = "/unifyfs"
         filename = os.path.join(path, "pegasus")
@@ -150,7 +150,7 @@ class MimirWorkflow:
         ld_preload = ""
         if self.intercept:
             if "UNIFYFS_LIB_PATH" not in os.environ:
-                raise Exception('UNIFYFS_LIB_PATH not set. Needs to point to libunifyfs_gotcha.so.')
+                raise Exception('UNIFYFS_LIB_PATH not set. Needs to point to libunifyfs_preload_gotcha.so.')
             ld_preload = os.environ["UNIFYFS_LIB_PATH"]
         self.wf = Workflow(self.wf_name, infer_dependencies=True)
         if self.intercept:

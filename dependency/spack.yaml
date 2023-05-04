@@ -1,7 +1,7 @@
 spack:
   specs:
   - cmake
-  - unifyfs@1.0.1 ^openssl@1.1.1t
+  - unifyfs@1.0.1+preload ^openssl@1.1.1t
   - pegasus@5.0
   - catch2@3.0.1
   view: true

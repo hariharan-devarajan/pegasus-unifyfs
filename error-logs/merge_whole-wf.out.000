@@ -1,0 +1,40 @@
+Job Launched in directory /p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/scratch/run
+/p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/scratch/run /p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/scratch/run
+Running unifyfs version
+/usr/WS2/iopp/software/pegasus-unifyfs/dependency/.spack-env/view/bin/unifyfs start --share-dir=/p/gpfs1/iopp/temp/unifyfs/share-dir -d
+
+## options from the command line ##
+cleanup:	0
+debug:	5
+mountpoint:	(null)
+script:	(null)
+share_dir:	/p/gpfs1/iopp/temp/unifyfs/share-dir
+server:	(null)
+stage_in:	(null)
+stage_out:	(null)
+stage_parallel:	0
+stage_timeout:	-1
+
+## job allocation (1 nodes) ##
+lassen31
+UNIFYFS LAUNCH DEBUG: jsrun argv[0] = jsrun
+UNIFYFS LAUNCH DEBUG: jsrun argv[1] = --immediate
+UNIFYFS LAUNCH DEBUG: jsrun argv[2] = -e
+UNIFYFS LAUNCH DEBUG: jsrun argv[3] = individual
+UNIFYFS LAUNCH DEBUG: jsrun argv[4] = --stdio_stderr
+UNIFYFS LAUNCH DEBUG: jsrun argv[5] = unifyfsd.err.%h.%p
+UNIFYFS LAUNCH DEBUG: jsrun argv[6] = --stdio_stdout
+UNIFYFS LAUNCH DEBUG: jsrun argv[7] = unifyfsd.out.%h.%p
+UNIFYFS LAUNCH DEBUG: jsrun argv[8] = --nrs
+UNIFYFS LAUNCH DEBUG: jsrun argv[9] = 1
+UNIFYFS LAUNCH DEBUG: jsrun argv[10] = -r1
+UNIFYFS LAUNCH DEBUG: jsrun argv[11] = -c8
+UNIFYFS LAUNCH DEBUG: jsrun argv[12] = -a1
+UNIFYFS LAUNCH DEBUG: jsrun argv[13] = /usr/WS2/iopp/software/spack/opt/spack/linux-rhel7-power9le/gcc-8.3.1/unifyfs-1.0.1-zfs3klawa2cijzokeddosmaandxbzeyb/bin/unifyfsd
+UNIFYFS LAUNCH DEBUG: jsrun argv[14] = -v
+UNIFYFS LAUNCH DEBUG: jsrun argv[15] = 5
+UNIFYFS LAUNCH DEBUG: jsrun argv[16] = -S
+UNIFYFS LAUNCH DEBUG: jsrun argv[17] = /p/gpfs1/iopp/temp/unifyfs/share-dir
+UNIFYFS LAUNCH DEBUG: jsrun argv[18] = -H
+UNIFYFS LAUNCH DEBUG: jsrun argv[19] = /p/gpfs1/iopp/temp/unifyfs/share-dir/unifyfsd.hosts
+jsrun -a 32 -c 32 -r 1 -env LD_PRELOAD /usr/WS2/iopp/software/pegasus-unifyfs/dependency/.spack-env/view/lib/libunifyfs_preload_gotcha.so /usr/WS2/iopp/software/pegasus/install/bin/pegasus-mpi-cluster -v merge_whole-wf.in
