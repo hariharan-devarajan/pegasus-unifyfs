@@ -1,75 +1,147 @@
-2023-05-04T15:08:59 tid=162021 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
-2023-05-04T15:08:59 tid=162021 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
-2023-05-04T15:08:59 tid=162021 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
-2023-05-04T15:08:59 tid=162021 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
-UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
-2023-05-04T15:08:59 tid=162025 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
-2023-05-04T15:08:59 tid=162025 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
-2023-05-04T15:08:59 tid=162025 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
-2023-05-04T15:08:59 tid=162025 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
-UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
-2023-05-04T15:08:59 tid=162028 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
-2023-05-04T15:08:59 tid=162028 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
-2023-05-04T15:08:59 tid=162028 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
-2023-05-04T15:08:59 tid=162028 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
-UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
-2023-05-04T15:08:59 tid=162031 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://157313-0'
-2023-05-04T15:08:59 tid=162031 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://157313-0' proto:'na+sm'
-2023-05-04T15:08:59 tid=162031 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
-2023-05-04T15:08:59 tid=162031 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
-2023-05-04T15:08:59 tid=162031 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
-2023-05-04T15:08:59 tid=162031 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
-2023-05-04T15:08:59 tid=162031 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
-2023-05-04T15:08:59 tid=162031 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
-UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
-2023-05-04T15:08:59 tid=162034 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://157313-0'
-2023-05-04T15:08:59 tid=162034 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://157313-0' proto:'na+sm'
-2023-05-04T15:08:59 tid=162034 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
-2023-05-04T15:08:59 tid=162034 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
-2023-05-04T15:08:59 tid=162034 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
-2023-05-04T15:08:59 tid=162034 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
-2023-05-04T15:08:59 tid=162034 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
-2023-05-04T15:08:59 tid=162034 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
-UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
-2023-05-04T15:08:59 tid=162037 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://157313-0'
-2023-05-04T15:08:59 tid=162037 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://157313-0' proto:'na+sm'
-2023-05-04T15:08:59 tid=162037 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
-2023-05-04T15:08:59 tid=162037 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
-2023-05-04T15:08:59 tid=162037 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
-2023-05-04T15:08:59 tid=162037 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
-2023-05-04T15:08:59 tid=162037 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
-2023-05-04T15:08:59 tid=162037 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
-UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
-2023-05-04T15:08:59 tid=162037 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://157313-0'
-2023-05-04T15:08:59 tid=162037 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://157313-0' proto:'na+sm'
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177933 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177933 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177933 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177934 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177934 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177934 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177938 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177938 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177938 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177938 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177938 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177938 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177939 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177939 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177939 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177940 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177940 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177940 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177944 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177944 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177944 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177943 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177943 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177943 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177945 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177945 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177945 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177946 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177946 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177946 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177938 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177938 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177938 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177938 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177938 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177938 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177953 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177953 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177953 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177955 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177955 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177955 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177956 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177956 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177956 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177963 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177963 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177963 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177963 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177963 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177963 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177964 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177964 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177964 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:57:59 tid=177966 @ unifyfs_fskv_init() [../../common/src/unifyfs_keyval.c:592] missing local kvstore directory /var/tmp/kvstore
+2023-05-08T12:57:59 tid=177966 @ unifyfs_initialize() [unifyfs_api.c:201] failed to initialize kvstore
+2023-05-08T12:57:59 tid=177966 @ posix_client_init() [posix_client.c:461] client initialization failed - Failure
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with 'Failure'
+2023-05-08T12:58:02 tid=178008 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:02 tid=178008 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+2023-05-08T12:58:02 tid=178008 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
+2023-05-08T12:58:02 tid=178008 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
+2023-05-08T12:58:02 tid=178008 @ invoke_client_mount_rpc() [margo_client.c:278] Got response ret=0
+2023-05-08T12:58:02 tid=178008 @ invoke_client_mount_rpc() [margo_client.c:288] My client id is 1
+2023-05-08T12:58:02 tid=178008 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178008 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178008 @ init_superblock_structures() [unifyfs.c:264] Meta-stacks initialized!
+2023-05-08T12:58:02 tid=178008 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178008 @ unifyfs_logio_init_client() [../../common/src/unifyfs_logio.c:392] shmem header - hdr_sz=65536, data_sz=264241152, data_offset=65536
+2023-05-08T12:58:02 tid=178008 @ unifyfs_logio_init_client() [../../common/src/unifyfs_logio.c:407] using spillover - size = 4294967296 B
+2023-05-08T12:58:02 tid=178008 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178008 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178008 @ map_spillfile() [../../common/src/unifyfs_logio.c:165] mapping spillfile - fd=11, pgsz=65536
+2023-05-08T12:58:02 tid=178008 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178008 @ unifyfs_logio_init_client() [../../common/src/unifyfs_logio.c:458] spill header - hdr_sz=65536, data_sz=4290772992, data_offset=65536
+2023-05-08T12:58:02 tid=178008 @ unifyfs_initialize() [unifyfs_api.c:233] calling attach rpc
+2023-05-08T12:58:02 tid=178008 @ invoke_client_attach_rpc() [margo_client.c:343] invoking the attach rpc function in client
+2023-05-08T12:58:02 tid=178008 @ invoke_client_attach_rpc() [margo_client.c:357] Got response ret=0
+2023-05-08T12:58:02 tid=178008 @ invoke_client_metaget_rpc() [margo_client.c:499] invoking the metaget rpc function in client
+2023-05-08T12:58:02 tid=178008 @ invoke_client_metaget_rpc() [margo_client.c:513] Got response ret=0
+2023-05-08T12:58:02 tid=178008 @ unifyfs_fid_alloc() [unifyfs_fid.c:29] unifyfs_stack_pop() gave 0
+2023-05-08T12:58:02 tid=178008 @ unifyfs_fid_create_file() [unifyfs_fid.c:221] Filename /unifyfs got unifyfs fid 0
+2023-05-08T12:58:02 tid=178008 @ setup_gotcha_wrappers() [gotcha_map_unifyfs_list.c:467] gotcha_wrap() returned 1
+2023-05-08T12:58:02 tid=178008 @ setup_gotcha_wrappers() [gotcha_map_unifyfs_list.c:477] Gotcha failed to wrap function 'stat'
+2023-05-08T12:58:02 tid=178008 @ setup_gotcha_wrappers() [gotcha_map_unifyfs_list.c:477] Gotcha failed to wrap function 'fstat'
+2023-05-08T12:58:02 tid=178008 @ posix_client_init() [posix_client.c:504] FD limit for system = 16384
+DEBUG: mounted
+2023-05-08T12:58:02 tid=178008 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:02 tid=178008 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
 [error] Could not initialize hg_class
 bash: /var/tmp/haridev/spack-stage/spack-stage-unifyfs-1.0.1-zfs3klawa2cijzokeddosmaandxbzeyb/spack-src/client/src/margo_client.c:129: unifyfs_client_rpc_init: Assertion `ctx->mid' failed.
-Failed to wait for server initialization
-2023-05-04T15:11:02 tid=163152 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://157313-0'
-2023-05-04T15:11:02 tid=163152 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://157313-0' proto:'na+sm'
-2023-05-04T15:11:02 tid=163152 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
-2023-05-04T15:11:02 tid=163152 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
-2023-05-04T15:11:02 tid=163152 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
-2023-05-04T15:11:02 tid=163152 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
-2023-05-04T15:11:02 tid=163152 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
-2023-05-04T15:11:02 tid=163152 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
-UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
-2023-05-04T15:11:02 tid=163152 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://157313-0'
-2023-05-04T15:11:02 tid=163152 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://157313-0' proto:'na+sm'
-[error] Could not initialize hg_class
-bash: /var/tmp/haridev/spack-stage/spack-stage-unifyfs-1.0.1-zfs3klawa2cijzokeddosmaandxbzeyb/spack-src/client/src/margo_client.c:129: unifyfs_client_rpc_init: Assertion `ctx->mid' failed.
-/p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/pmc_wrapper.sh: line 26: 163152 Aborted                 jsrun -a 32 -c 32 -r 1 -env LD_PRELOAD $LD_PRELOAD2 ${PEGASUS_DIR} -v $@
-2023-05-04T15:11:02 tid=163155 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://157313-0'
-2023-05-04T15:11:02 tid=163155 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://157313-0' proto:'na+sm'
-2023-05-04T15:11:02 tid=163155 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
-2023-05-04T15:11:02 tid=163155 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
-2023-05-04T15:11:02 tid=163155 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
-2023-05-04T15:11:02 tid=163155 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
-2023-05-04T15:11:02 tid=163155 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
-2023-05-04T15:11:02 tid=163155 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
-UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
-2023-05-04T15:11:02 tid=163155 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://157313-0'
-2023-05-04T15:11:02 tid=163155 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://157313-0' proto:'na+sm'
+/p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/pmc_wrapper.sh: line 26: 178008 Aborted                 jsrun -a 32 -c 32 -r 1 ${PEGASUS_DIR} -v $@
+2023-05-08T12:58:02 tid=178012 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:02 tid=178012 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+2023-05-08T12:58:02 tid=178012 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
+2023-05-08T12:58:02 tid=178012 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
+2023-05-08T12:58:02 tid=178012 @ invoke_client_mount_rpc() [margo_client.c:278] Got response ret=0
+2023-05-08T12:58:02 tid=178012 @ invoke_client_mount_rpc() [margo_client.c:288] My client id is 2
+2023-05-08T12:58:02 tid=178012 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178012 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178012 @ init_superblock_structures() [unifyfs.c:264] Meta-stacks initialized!
+2023-05-08T12:58:02 tid=178012 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178012 @ unifyfs_logio_init_client() [../../common/src/unifyfs_logio.c:392] shmem header - hdr_sz=65536, data_sz=264241152, data_offset=65536
+2023-05-08T12:58:02 tid=178012 @ unifyfs_logio_init_client() [../../common/src/unifyfs_logio.c:407] using spillover - size = 4294967296 B
+2023-05-08T12:58:02 tid=178012 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178012 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178012 @ map_spillfile() [../../common/src/unifyfs_logio.c:165] mapping spillfile - fd=11, pgsz=65536
+2023-05-08T12:58:02 tid=178012 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178012 @ unifyfs_logio_init_client() [../../common/src/unifyfs_logio.c:458] spill header - hdr_sz=65536, data_sz=4290772992, data_offset=65536
+2023-05-08T12:58:02 tid=178012 @ unifyfs_initialize() [unifyfs_api.c:233] calling attach rpc
+2023-05-08T12:58:02 tid=178012 @ invoke_client_attach_rpc() [margo_client.c:343] invoking the attach rpc function in client
+2023-05-08T12:58:02 tid=178012 @ invoke_client_attach_rpc() [margo_client.c:357] Got response ret=0
+2023-05-08T12:58:02 tid=178012 @ invoke_client_metaget_rpc() [margo_client.c:499] invoking the metaget rpc function in client
+2023-05-08T12:58:02 tid=178012 @ invoke_client_metaget_rpc() [margo_client.c:513] Got response ret=0
+2023-05-08T12:58:02 tid=178012 @ unifyfs_fid_alloc() [unifyfs_fid.c:29] unifyfs_stack_pop() gave 0
+2023-05-08T12:58:02 tid=178012 @ unifyfs_fid_create_file() [unifyfs_fid.c:221] Filename /unifyfs got unifyfs fid 0
+2023-05-08T12:58:02 tid=178012 @ setup_gotcha_wrappers() [gotcha_map_unifyfs_list.c:467] gotcha_wrap() returned 1
+2023-05-08T12:58:02 tid=178012 @ setup_gotcha_wrappers() [gotcha_map_unifyfs_list.c:477] Gotcha failed to wrap function 'stat'
+2023-05-08T12:58:02 tid=178012 @ setup_gotcha_wrappers() [gotcha_map_unifyfs_list.c:477] Gotcha failed to wrap function 'fstat'
+2023-05-08T12:58:02 tid=178012 @ posix_client_init() [posix_client.c:504] FD limit for system = 16384
+DEBUG: mounted
+2023-05-08T12:58:02 tid=178012 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:02 tid=178012 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
 [error] Could not initialize hg_class
 jsrun: /var/tmp/haridev/spack-stage/spack-stage-unifyfs-1.0.1-zfs3klawa2cijzokeddosmaandxbzeyb/spack-src/client/src/margo_client.c:129: unifyfs_client_rpc_init: Assertion `ctx->mid' failed.
-/p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/pmc_wrapper.sh: line 26: 163155 Aborted                 ${UNIFYFS_ROOT_DIR}/bin/unifyfs terminate
+/p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/pmc_wrapper.sh: line 26: 178012 Aborted                 ${UNIFYFS_ROOT_DIR}/bin/unifyfs terminate

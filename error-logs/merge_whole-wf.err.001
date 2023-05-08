@@ -1,0 +1,63 @@
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
+2023-05-08T12:58:16 tid=178180 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:16 tid=178180 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+2023-05-08T12:58:16 tid=178180 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
+2023-05-08T12:58:16 tid=178180 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
+2023-05-08T12:58:16 tid=178180 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
+2023-05-08T12:58:16 tid=178180 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
+2023-05-08T12:58:16 tid=178180 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
+2023-05-08T12:58:16 tid=178180 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
+2023-05-08T12:58:16 tid=178183 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:16 tid=178183 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+2023-05-08T12:58:16 tid=178183 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
+2023-05-08T12:58:16 tid=178183 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
+2023-05-08T12:58:16 tid=178183 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
+2023-05-08T12:58:16 tid=178183 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
+2023-05-08T12:58:16 tid=178183 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
+2023-05-08T12:58:16 tid=178183 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
+2023-05-08T12:58:16 tid=178186 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:16 tid=178186 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+2023-05-08T12:58:16 tid=178186 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
+2023-05-08T12:58:16 tid=178186 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
+2023-05-08T12:58:16 tid=178186 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
+2023-05-08T12:58:16 tid=178186 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
+2023-05-08T12:58:16 tid=178186 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
+2023-05-08T12:58:16 tid=178186 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
+2023-05-08T12:58:16 tid=178186 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:16 tid=178186 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+[error] Could not initialize hg_class
+bash: /var/tmp/haridev/spack-stage/spack-stage-unifyfs-1.0.1-zfs3klawa2cijzokeddosmaandxbzeyb/spack-src/client/src/margo_client.c:129: unifyfs_client_rpc_init: Assertion `ctx->mid' failed.
+Failed to wait for server initialization
+2023-05-08T13:00:19 tid=179396 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T13:00:19 tid=179396 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+2023-05-08T13:00:19 tid=179396 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
+2023-05-08T13:00:19 tid=179396 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
+2023-05-08T13:00:19 tid=179396 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
+2023-05-08T13:00:19 tid=179396 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
+2023-05-08T13:00:19 tid=179396 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
+2023-05-08T13:00:19 tid=179396 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
+2023-05-08T13:00:19 tid=179396 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T13:00:19 tid=179396 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+[error] Could not initialize hg_class
+bash: /var/tmp/haridev/spack-stage/spack-stage-unifyfs-1.0.1-zfs3klawa2cijzokeddosmaandxbzeyb/spack-src/client/src/margo_client.c:129: unifyfs_client_rpc_init: Assertion `ctx->mid' failed.
+/p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/pmc_wrapper.sh: line 26: 179396 Aborted                 jsrun -a 32 -c 32 -r 1 ${PEGASUS_DIR} -v $@
+2023-05-08T13:00:19 tid=179399 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T13:00:19 tid=179399 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+2023-05-08T13:00:19 tid=179399 @ unifyfs_initialize() [unifyfs_api.c:215] calling mount rpc
+2023-05-08T13:00:19 tid=179399 @ invoke_client_mount_rpc() [margo_client.c:260] invoking the mount rpc function in client
+2023-05-08T13:00:19 tid=179399 @ forward_to_server() [margo_client.c:234] margo_forward_timed() failed - HG_PROTOCOL_ERROR
+2023-05-08T13:00:19 tid=179399 @ invoke_client_mount_rpc() [margo_client.c:264] forward of mount rpc to server failed
+2023-05-08T13:00:19 tid=179399 @ unifyfs_initialize() [unifyfs_api.c:219] failed to mount to server
+2023-05-08T13:00:19 tid=179399 @ posix_client_init() [posix_client.c:461] client initialization failed - "Mercury/Argobots operation error"
+UNIFYFS ERROR: unifyfs_mount(/unifyfs) failed with '"Mercury/Argobots operation error"'
+2023-05-08T13:00:19 tid=179399 @ rpc_lookup_local_server_addr() [../../common/src/unifyfs_rpc_util.c:87] found local server rpc address 'na+sm://177970-0'
+2023-05-08T13:00:19 tid=179399 @ unifyfs_client_rpc_init() [margo_client.c:110] svr_addr:'na+sm://177970-0' proto:'na+sm'
+[error] Could not initialize hg_class
+jsrun: /var/tmp/haridev/spack-stage/spack-stage-unifyfs-1.0.1-zfs3klawa2cijzokeddosmaandxbzeyb/spack-src/client/src/margo_client.c:129: unifyfs_client_rpc_init: Assertion `ctx->mid' failed.
+/p/gpfs1/iopp/temp/unifyfs/pegasus/posix/haridev/app/pmc_wrapper.sh: line 26: 179399 Aborted                 ${UNIFYFS_ROOT_DIR}/bin/unifyfs terminate

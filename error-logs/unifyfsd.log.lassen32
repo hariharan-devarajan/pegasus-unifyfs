@@ -1,0 +1,93 @@
+UNIFYFS CONFIG: unifyfs.cleanup = off
+UNIFYFS CONFIG: unifyfs.daemonize = off
+UNIFYFS CONFIG: unifyfs.mountpoint = /unifyfs
+UNIFYFS CONFIG: client.fsync_persist = on
+UNIFYFS CONFIG: client.local_extents = off
+UNIFYFS CONFIG: client.node_local_extents = off
+UNIFYFS CONFIG: client.max_files = 128
+UNIFYFS CONFIG: client.write_index_size = 20971520
+UNIFYFS CONFIG: client.write_sync = off
+UNIFYFS CONFIG: client.super_magic = on
+UNIFYFS CONFIG: log.verbosity = 5
+UNIFYFS CONFIG: log.file = unifyfsd.log
+UNIFYFS CONFIG: log.dir = /g/g92/haridev/unifyfs/logs/
+UNIFYFS CONFIG: log.on_error = off
+UNIFYFS CONFIG: logio.chunk_size = 4194304
+UNIFYFS CONFIG: logio.shmem_size = 268435456
+UNIFYFS CONFIG: logio.spill_size = 4294967296
+UNIFYFS CONFIG: logio.spill_dir = /p/gpfs1/iopp/temp/unifyfs/spill
+UNIFYFS CONFIG: margo.client_pool_size = 4
+UNIFYFS CONFIG: margo.client_timeout = 5000
+UNIFYFS CONFIG: margo.lazy_connect = on
+UNIFYFS CONFIG: margo.server_pool_size = 4
+UNIFYFS CONFIG: margo.server_timeout = 15000
+UNIFYFS CONFIG: margo.tcp = on
+UNIFYFS CONFIG: meta.range_size = 1048576
+UNIFYFS CONFIG: runstate.dir = /var/tmp
+UNIFYFS CONFIG: server.hostfile = /p/gpfs1/iopp/temp/unifyfs/share-dir/unifyfsd.hosts
+UNIFYFS CONFIG: server.init_timeout = 120
+UNIFYFS CONFIG: server.local_extents = off
+UNIFYFS CONFIG: server.max_app_clients = 256
+UNIFYFS CONFIG: sharedfs.dir = /p/gpfs1/iopp/temp/unifyfs/share-dir
+2023-05-08T12:58:00 tid=177970 @ process_servers_hostfile() [unifyfs_server.c:195] found myself at hostfile index=0
+2023-05-08T12:58:00 tid=177970 @ process_servers_hostfile() [unifyfs_server.c:203] set pmi rank to host index 0
+2023-05-08T12:58:00 tid=177970 @ main() [unifyfs_server.c:417] initializing RPC service
+# [12001687.851150] mercury->mem: [warning] /var/tmp/haridev/spack-stage/spack-stage-mercury-2.1.0-pjev5ztws3b6yrdyruu3432ja3nbof75/spack-src/src/na/na_sm.c:1363
+ # na_sm_shm_map(): Not aligned properly, page size=65536 bytes, length=602112 bytes
+2023-05-08T12:58:00 tid=177970 @ setup_local_target() [margo_server.c:270] shared-memory margo RPC server: na+sm://177970-0
+2023-05-08T12:58:00 tid=177970 @ rpc_publish_local_server_addr() [../../common/src/unifyfs_rpc_util.c:33] publishing client-server rpc address 'na+sm://177970-0'
+2023-05-08T12:58:00 tid=177970 @ setup_remote_target() [margo_server.c:140] margo RPC server: ofi+tcp;ofi_rxm://192.168.128.32:41417
+2023-05-08T12:58:00 tid=177970 @ rpc_publish_remote_server_addr() [../../common/src/unifyfs_rpc_util.c:51] publishing server-server rpc address 'ofi+tcp;ofi_rxm://192.168.128.32:41417'
+2023-05-08T12:58:00 tid=177970 @ main() [unifyfs_server.c:465] launching service manager thread
+2023-05-08T12:58:00 tid=177970 @ main() [unifyfs_server.c:472] initializing file operations
+2023-05-08T12:58:00 tid=177982 @ service_manager_thread() [unifyfs_service_manager.c:1441] I am the service manager thread!
+2023-05-08T12:58:00 tid=177970 @ rpc_init() [unifyfs_fops_rpc.c:28] initializing RPC file operations..
+2023-05-08T12:58:00 tid=177970 @ main() [unifyfs_server.c:479] connecting rpc servers
+2023-05-08T12:58:00 tid=177970 @ main() [unifyfs_server.c:489] publishing server pid
+2023-05-08T12:58:00 tid=177970 @ unifyfs_publish_server_pids() [unifyfs_server_pid.c:163] servers ready to accept client connections
+2023-05-08T12:58:00 tid=177970 @ main() [unifyfs_server.c:497] server[0] - finished initialization
+2023-05-08T12:58:02 tid=177972 @ unifyfs_mount_rpc() [unifyfs_client_rpc.c:142] creating new application for app_id=1511587981
+2023-05-08T12:58:02 tid=177972 @ unifyfs_mount_rpc() [unifyfs_client_rpc.c:152] creating new app client for na+sm://178008-0
+2023-05-08T12:58:02 tid=177972 @ unifyfs_mount_rpc() [unifyfs_client_rpc.c:163] created new application client 1511587981:1
+2023-05-08T12:58:02 tid=178011 @ request_manager_thread() [unifyfs_request_manager.c:1738] I am request manager [app=1511587981:client=1] thread!
+2023-05-08T12:58:02 tid=177972 @ create_mountpoint_dir() [unifyfs_client_rpc.c:75] creating global file metadata for mountpoint:
+2023-05-08T12:58:02 tid=177972 @ debug_print_file_attr() [unifyfs_meta.h:142] fileattr(0x20000372ff40) - gfid=1511587981 filename=/unifyfs
+2023-05-08T12:58:02 tid=177972 @ debug_print_file_attr() [unifyfs_meta.h:144]              - sz=0 mode=40755 uid=35619 gid=35619
+2023-05-08T12:58:02 tid=177972 @ debug_print_file_attr() [unifyfs_meta.h:146]              - shared=1 laminated=0
+2023-05-08T12:58:02 tid=177972 @ debug_print_file_attr() [unifyfs_meta.h:150]              - atime=1683575882.220710909 ctime=1683575882.220710909 mtime=1683575882.220710909
+2023-05-08T12:58:02 tid=177972 @ signal_new_requests() [unifyfs_request_manager.c:269] signaling new requests
+2023-05-08T12:58:02 tid=178011 @ request_manager_thread() [unifyfs_request_manager.c:1788] RM[1511587981:1] got work
+2023-05-08T12:58:02 tid=178011 @ rm_process_client_requests() [unifyfs_request_manager.c:1617] processing 1 client requests
+2023-05-08T12:58:02 tid=178011 @ process_metaset_rpc() [unifyfs_request_manager.c:1282] setting metadata for gfid=1511587981
+2023-05-08T12:58:02 tid=177972 @ signal_new_requests() [unifyfs_request_manager.c:269] signaling new requests
+2023-05-08T12:58:02 tid=178011 @ request_manager_thread() [unifyfs_request_manager.c:1788] RM[1511587981:1] got work
+2023-05-08T12:58:02 tid=178011 @ rm_process_client_requests() [unifyfs_request_manager.c:1617] processing 1 client requests
+2023-05-08T12:58:02 tid=178011 @ process_attach_rpc() [unifyfs_request_manager.c:1065] attaching client 1511587981:1
+2023-05-08T12:58:02 tid=178011 @ unifyfs_logio_init() [../../common/src/unifyfs_logio.c:221] shmem header - hdr_sz=65536, data_sz=264241152, data_offset=65536
+2023-05-08T12:58:02 tid=178011 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178011 @ map_spillfile() [../../common/src/unifyfs_logio.c:165] mapping spillfile - fd=24, pgsz=65536
+2023-05-08T12:58:02 tid=178011 @ unifyfs_logio_init() [../../common/src/unifyfs_logio.c:251] spill header - hdr_sz=65536, data_sz=4290772992, data_offset=65536
+2023-05-08T12:58:02 tid=178011 @ unifyfs_logio_init() [../../common/src/unifyfs_logio.c:270] logio_context for client [1511587981:1] - shmem(sz=268435456, hdr=0x200020001b20), spill(sz=4294967296, hdr=0x200000300000)
+2023-05-08T12:58:02 tid=178011 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=177974 @ signal_new_requests() [unifyfs_request_manager.c:269] signaling new requests
+2023-05-08T12:58:02 tid=178011 @ request_manager_thread() [unifyfs_request_manager.c:1788] RM[1511587981:1] got work
+2023-05-08T12:58:02 tid=178011 @ rm_process_client_requests() [unifyfs_request_manager.c:1617] processing 1 client requests
+2023-05-08T12:58:02 tid=178011 @ process_metaget_rpc() [unifyfs_request_manager.c:1220] getting metadata for gfid=1511587981
+2023-05-08T12:58:02 tid=177973 @ unifyfs_mount_rpc() [unifyfs_client_rpc.c:148] using existing app_config for app_id=1511587981
+2023-05-08T12:58:02 tid=177973 @ unifyfs_mount_rpc() [unifyfs_client_rpc.c:152] creating new app client for na+sm://178012-0
+2023-05-08T12:58:02 tid=177973 @ unifyfs_mount_rpc() [unifyfs_client_rpc.c:163] created new application client 1511587981:2
+2023-05-08T12:58:02 tid=178015 @ request_manager_thread() [unifyfs_request_manager.c:1738] I am request manager [app=1511587981:client=2] thread!
+2023-05-08T12:58:02 tid=177973 @ signal_new_requests() [unifyfs_request_manager.c:269] signaling new requests
+2023-05-08T12:58:02 tid=178015 @ request_manager_thread() [unifyfs_request_manager.c:1788] RM[1511587981:2] got work
+2023-05-08T12:58:02 tid=178015 @ rm_process_client_requests() [unifyfs_request_manager.c:1617] processing 1 client requests
+2023-05-08T12:58:02 tid=178015 @ process_attach_rpc() [unifyfs_request_manager.c:1065] attaching client 1511587981:2
+2023-05-08T12:58:02 tid=178015 @ unifyfs_logio_init() [../../common/src/unifyfs_logio.c:221] shmem header - hdr_sz=65536, data_sz=264241152, data_offset=65536
+2023-05-08T12:58:02 tid=178015 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=178015 @ map_spillfile() [../../common/src/unifyfs_logio.c:165] mapping spillfile - fd=27, pgsz=65536
+2023-05-08T12:58:02 tid=178015 @ unifyfs_logio_init() [../../common/src/unifyfs_logio.c:251] spill header - hdr_sz=65536, data_sz=4290772992, data_offset=65536
+2023-05-08T12:58:02 tid=178015 @ unifyfs_logio_init() [../../common/src/unifyfs_logio.c:270] logio_context for client [1511587981:2] - shmem(sz=268435456, hdr=0x200040001110), spill(sz=4294967296, hdr=0x200000310000)
+2023-05-08T12:58:02 tid=178015 @ get_page_size() [../../common/src/unifyfs_logio.c:83] returning page size 65536 B
+2023-05-08T12:58:02 tid=177975 @ signal_new_requests() [unifyfs_request_manager.c:269] signaling new requests
+2023-05-08T12:58:02 tid=178015 @ request_manager_thread() [unifyfs_request_manager.c:1788] RM[1511587981:2] got work
+2023-05-08T12:58:02 tid=178015 @ rm_process_client_requests() [unifyfs_request_manager.c:1617] processing 1 client requests
+2023-05-08T12:58:02 tid=178015 @ process_metaget_rpc() [unifyfs_request_manager.c:1220] getting metadata for gfid=1511587981

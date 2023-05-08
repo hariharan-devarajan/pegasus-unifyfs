@@ -1,0 +1,8 @@
+#@ 1 pegasus_raw ID0000001 
+TASK ID0000001 /usr/WS2/iopp/software/pegasus/install/bin/pegasus-kickstart  -n pegasus_raw -N ID0000001 -R condorpool -L pegasus_io_test -T 2023-05-08T12:57:16-07:00 /usr/WS2/iopp/software/pegasus-unifyfs/build/apps/posix/pegasus --durations yes --reporter compact --pfs /p/gpfs1/iopp/temp/unifyfs/data --filename raw_0.dat [operation=raw]
+#@ 2 pegasus_write ID0000002 
+TASK ID0000002 /usr/WS2/iopp/software/pegasus/install/bin/pegasus-kickstart  -n pegasus_write -N ID0000002 -R condorpool -H -L pegasus_io_test -T 2023-05-08T12:57:16-07:00 /usr/WS2/iopp/software/pegasus-unifyfs/build/apps/posix/pegasus --durations yes --reporter compact --pfs /unifyfs --filename test_0.dat [operation=write]
+#@ 3 pegasus_read ID0000003 
+TASK ID0000003 /usr/WS2/iopp/software/pegasus/install/bin/pegasus-kickstart  -n pegasus_read -N ID0000003 -R condorpool -H -L pegasus_io_test -T 2023-05-08T12:57:16-07:00 /usr/WS2/iopp/software/pegasus-unifyfs/build/apps/posix/pegasus --durations yes --reporter compact --pfs /unifyfs --filename test_0.dat [operation=read]
+
+EDGE ID0000002 ID0000003

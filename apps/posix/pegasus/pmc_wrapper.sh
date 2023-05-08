@@ -20,8 +20,8 @@ else
   mkdir -p /p/gpfs1/iopp/temp/unifyfs/share-dir
   echo "${UNIFYFS_ROOT_DIR}/bin/unifyfs start --share-dir=/p/gpfs1/iopp/temp/unifyfs/share-dir -d"
   ${UNIFYFS_ROOT_DIR}/bin/unifyfs start --share-dir=/p/gpfs1/iopp/temp/unifyfs/share-dir -d
-  echo "jsrun -a 32 -c 32 -r 1 -env LD_PRELOAD $LD_PRELOAD2 ${PEGASUS_DIR} -v $@"
-  jsrun -a 32 -c 32 -r 1 -env LD_PRELOAD $LD_PRELOAD2 ${PEGASUS_DIR} -v $@
+  echo "jsrun -a 32 -c 32 -r 1 ${PEGASUS_DIR} -v $@"
+  jsrun -a 32 -c 32 -r 1 ${PEGASUS_DIR} -v $@
   ${UNIFYFS_ROOT_DIR}/bin/unifyfs terminate
 fi
 
